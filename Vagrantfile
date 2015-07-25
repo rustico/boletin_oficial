@@ -8,7 +8,10 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update
-    sudo apt-get install -y python-dev
+    sudo apt-get install -y \ 
+         python-dev \
+         git \
+         poppler-utils
 
     cd /code
     wget https://bootstrap.pypa.io/get-pip.py
