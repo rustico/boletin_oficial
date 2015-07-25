@@ -8,3 +8,5 @@ parsers/pdf
 parsers/txt
 parsers/xml
 *.log
+.venv
+.vagrant
