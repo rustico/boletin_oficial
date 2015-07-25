@@ -47,6 +47,8 @@ class DownloadThread(Thread):
                     logging.error('[%s]: Downloading Timeout', item['filename_path'])
                     download_queue.put(item)
             else:
+                # We don't know if this PDF was parsed
+                pdf_queue.put({'pdf': item['filename_path']})
                 logging.warning('[%s]: Downloading Already Existed', item['filename_path'])
                         
             download_queue.task_done()
