@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import re
-import MySQLdb
 
 class Adjudicacion():
     ENTIDAD_TOKENS = [" LICITACION ", " CONTRATACION "]
@@ -100,67 +99,3 @@ class Adjudicacion():
                                          .*""", re.VERBOSE | re.MULTILINE | re.UNICODE) 
 
         return last_line_regex.split(texto)[0]
-
-class Boletin():
-    """Lo que hacemos es obtener el texto completo del boletin y a partir de ahi
-       vamos diviendo las diferentes secciones
-    """
-
-    # Por favor poner ejemplos
-    # Aca, simplemente hay magia, mucha magia, tanta que ni entendemos como funciona
-    def __init__(self, boletin):
-        self.boletin = boletin.replace("\r", "")
-
-    def tiene_seccion(self, seccion):
-        seccion = seccion.replace(" ", r"[\n\s]+");
-        #regex_str = r"\%\s\d*\s\%\s\#.*\#\n\s*{0}".format(seccion);
-        regex_str = r"\#\s*{0}\s*\#".format(seccion);
-        regex = re.compile(regex_str, re.IGNORECASE);
-
-        return regex.search(self.boletin)
-
-    def get_desde_copete(self, seccion):
-        # Ok, definitivamente, no se como hicimos esa noche para que essto funcionara
-        # Memo, poner comentarios
-        seccion = seccion.replace(" ", r"[\n\s]+");
-        regex_str = r"\%\s\d*\s\%\s\#.*\#\n\s*{0}\n\#.*\#\s\%\s\d*\s\%\s\#.*\#|\#.*\#\s*{0}\s*\#.*\#".format(seccion);
-        regex = re.compile(regex_str, re.IGNORECASE);
-        regex_split = regex.split(self.boletin)
-
-        return regex_split[1] if len(regex_split) > 1 else ""
-
-    def get_proximo_copete(self, parte_de_seccion):
-        regex = re.compile(r"\%\s\d*\s\%.*\n\s*[a-záéíóú]+[a-záéíóú\s\n\(\)]*\#.*\#\s\%\s\d*\s\%\s\#.*\#|.*\n\s*[a-záéíóú]+[a-záéíóú\s\n\(\)]*\#.*\#", re.IGNORECASE)
-        match = regex.search(parte_de_seccion)
-
-        return match.group() if match else "";
-
-    def get_seccion(self, seccion):
-        desde_copete_seccion = self.get_desde_copete(seccion)
-        proximo_copete = self.get_proximo_copete(desde_copete_seccion)
-        index_proximo_copete = desde_copete_seccion.find(proximo_copete)
-
-        if index_proximo_copete:
-            return desde_copete_seccion[:index_proximo_copete] # Incluye el \n
-        
-        return desde_copete_seccion
-
-    def get_modulos_seccion(self, seccion):
-        seccion_completa = self.get_seccion(seccion)
-        regex =  re.compile(r"\%\s\d*\s\%\s\#.*\#\n\#.*\#\s\%\s\d*\s\%\s\#.*\#|\#.*\#\n\#.*\#", re.IGNORECASE)
-        return regex.split(seccion_completa);
-
-class PruebaDB():
-    def insert(self):
-        conn = MySQLdb.connect (host = "localhost", user = "root", passwd = "casandra", db = "boletin")
-        cursor = conn.cursor()
-        cursor.execute("""
-            INSERT INTO Adjudicaciones (objeto, textoOriginal)
-                VALUES
-                ('cosa que se compra', 'cosa que se compra entre otras cosas')
-            """)
-        print "Number of rows inserted: %d" % cursor.rowcount
-        cursor.close()
-        conn.close()
-        return ""
-
