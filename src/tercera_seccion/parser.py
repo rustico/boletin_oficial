@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import re
 
-class Adjudicacion():
+class AdjudicacionParser():
     ENTIDAD_TOKENS = [" LICITACION ", " CONTRATACION "]
     PROVEEDOR_TOKENS = [ "Empresa", "Firma", "Oferente", "Proveedor", "Adjudicatario", "Razón Social"]
     OBJETO_TOKENS = ["Objeto", "Objeto de la contratación"]
