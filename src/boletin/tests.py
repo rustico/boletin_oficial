@@ -54,14 +54,16 @@ COMANDO DE REMONTA
         boletin = BoletinParser(fixtures.boletines[1]);
         self.assertEqual(boletin.get_desde_copete("Dictámenes de Evaluación"),
                          """
-#I4284951I# % 23 % #N157178/11N#
+#I4284955I# % 23 % #N157178/11N#
 BANCO DE LA NACION ARGENTINA
 BANCO PIRULO
-% 19 % #F4285852F#
+% 19 % #F4284955F#
 Locaciones
 INMUEBLES (LOC)
-#I4286379I# % 19 % #N159046/11N#
-AFIP""")
+#I4286333I# % 19 % #N159046/11N#
+AFIP
+#F4286333F#
+""")
 
     def test_when_boletin_returns_nothing_from_seccion_adjudicaciones_copete(self):
         boletin = BoletinParser(fixtures.boletines[0].replace("Adjudicaciones", r"#I4284951I# % 23 % #N157178/11N#\nAdjudicaciones"))
@@ -71,19 +73,19 @@ AFIP""")
         boletin = BoletinParser(fixtures.boletines[1]);
         boletin.section_names = ['SUMINISTROS', 'OBRAS', 'SERVICIOS', 'VENTAS Y OFRECIMIENTOS DEL ESTADO', 'LOCACIONES', 'PREADJUDICACIONES', 'ADJUDICACIONES', 'DICTAMENES DE EVALUACION']
         self.assertEqual(boletin.get_section("Adjudicaciones"), """
-#I4284951I# % 23 % #N157178/11N#
+#I4284952I# % 23 % #N157178/11N#
 BANCO DE LA NACION ARGENTINA
 AREA COMPRAS Y CONTRATACIONES
-% 23 % #F4285033F#
-#I4285622I# % 23 % #N158007/11N#
+% 23 % #F4284952F#
+#I4285623I# % 23 % #N158007/11N#
 BLOQUE1
-% 23 % #F4285033F#
-#I4285622I# % 23 % #N158007/11N#
+% 23 % #F4285623F#
+#I4285624I# % 23 % #N158007/11N#
 BLOQUE2
-% 23 % #F4285033F#
-#I4285622I# % 23 % #N158007/11N#
+% 23 % #F4285624F#
+#I4285625I# % 23 % #N158007/11N#
 BLOQUE3
-% 23 % #F4281795F#
+% 23 % #F4285625F#
 """)
 
     def test_when_boletin_return_seccion_adjudicacion2(self):
@@ -114,10 +116,10 @@ e. 15/03/2010 Nº 24766/10 v. 15/03/2010
         boletin = BoletinParser(fixtures.boletines[1]);
         boletin.section_names = ['ADJUDICACIONES', 'DICTAMENES DE EVALUACION', 'LOCACIONES INMUEBLES (LOC)']
         self.assertEqual(boletin.get_section("Dictámenes de Evaluación"), """
-#I4284951I# % 23 % #N157178/11N#
+#I4284955I# % 23 % #N157178/11N#
 BANCO DE LA NACION ARGENTINA
 BANCO PIRULO
-% 19 % #F4285852F#
+% 19 % #F4284955F#
 """)
 
     def test_when_boletin_return_seccion_servicios(self):
@@ -126,27 +128,30 @@ BANCO PIRULO
         self.assertEqual(boletin.get_section("Servicios Tres Palabras Audiovisuales"), """
 #I4284951I# % 23 % #N157178/11N#
 BLOQUE1
-% 23 % #F4285033F#
-#I4285622I# % 23 % #N158007/11N#
+% 23 % #F4284951F#
+#I4285722I# % 23 % #N158007/11N#
 BLOQUE2
-% 23 % #F4281795F#
+% 23 % #F4285722F#
 """)
     
     def test_when_boletin_returns_modulos_seccion_adjudicaciones(self):
         boletin = BoletinParser(fixtures.boletines[1])
-        modulos = boletin.get_modulos_seccion("Adjudicaciones")        
+        boletin.section_names = ['ADJUDICACIONES', 'DICTAMENES DE EVALUACION', 'LOCACIONES INMUEBLES (LOC)']
+        modulos = boletin.get_section_elements("Adjudicaciones")
         self.assertEqual(len(modulos), 4)
-        self.assertTrue(modulos[0].find("BANCO DE LA NACION ARGENTINA"))
-        self.assertTrue(modulos[2].find("BLOQUE2"))
+        self.assertEqual(modulos[0][1], "BANCO DE LA NACION ARGENTINA\nAREA COMPRAS Y CONTRATACIONES")
+        self.assertEqual(modulos[2][1], "BLOQUE2")
 
     def test_when_boletin_returns_modulos_seccion_servicios(self):
         boletin = BoletinParser(fixtures.boletines[1])
-        modulos = boletin.get_modulos_seccion("Servicios Tres Palabras Audiovisuales")
+        boletin.section_names = ['Servicios Tres Palabras Audiovisuales', 'ADJUDICACIONES', 'DICTAMENES DE EVALUACION', 'LOCACIONES INMUEBLES (LOC)']
+        modulos = boletin.get_section_elements("Servicios Tres Palabras Audiovisuales")
         self.assertEqual(len(modulos), 2)
 
     def test_when_boletin_returns_modulos_seccion_dictameneS(self):
         boletin = BoletinParser(fixtures.boletines[1])
-        modulos = boletin.get_modulos_seccion("Dictámenes de Evaluación")
+        boletin.section_names = ['ADJUDICACIONES', 'DICTAMENES DE EVALUACION', 'LOCACIONES INMUEBLES (LOC)']
+        modulos = boletin.get_section_elements("Dictámenes de Evaluación")
         self.assertEqual(len(modulos), 1)
 
     def test_get_third_section_titles(self):
