@@ -6,11 +6,11 @@ from parser import AdjudicacionParser
 class TestAdjudicaciones(unittest.TestCase):
     def test_when_empty_return_texto_empty(self):
         adjudicacion = AdjudicacionParser()
-        self.assertFalse(bool(adjudicacion.get_texto()))
+        self.assertFalse(bool(adjudicacion.texto))
     
     def test_when_nestor_return_texto_nestor(self):
         adjudicacion = AdjudicacionParser("Nestor")
-        self.assertEqual(adjudicacion.get_texto(), "Nestor")
+        self.assertEqual(adjudicacion.texto, "Nestor")
 
     def test_when_adjudicacion_0_return_entidad_publica(self):
         adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[0])

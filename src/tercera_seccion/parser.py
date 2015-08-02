@@ -11,9 +11,6 @@ class AdjudicacionParser():
         self.texto_original = texto
         self.texto = self.__normalizar(texto)
 
-    def get_texto(self):
-        return self.texto
-
     def get_entidad_publica(self):		
         texto = self.texto.replace("\n", " ").replace("  ", " ")
 
