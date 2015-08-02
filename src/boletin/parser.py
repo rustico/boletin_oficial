@@ -73,21 +73,24 @@ class BoletinParser():
         seccion_completa = self.get_section(seccion)
 
         # We get the IDs of the element.
-        # Because of a webservice of theirs this could be useful in the future
         regex = re.compile('#I(\d*)I#', re.MULTILINE)
         elements_ids = regex.findall(seccion_completa)
         
-        # Match the beginning and the ending of an element
-        # They start with #I\d+I# and finish with #F\d+F#
-        # They can share the line with other characters of the PDF but they are irrelevant
-        regex = re.compile('\n?.*#[FI]\d*[IF]#.*\n', re.MULTILINE)
-
-        # Remove the blank elements
-        regex_elements = filter(lambda x: x, regex.split(seccion_completa))
-
+        # Split the Boletin in its elements
+        regex = re.compile('\n*.*#I\d*I#.*\n', re.MULTILINE)
+        regex_elements = regex.split(seccion_completa)
+        i = 0
         section_elements = []
-        for i, element in enumerate(regex_elements):
+        for regex_element in regex_elements:
+            if regex_element == '':
+                continue
+            
             element_id = elements_ids[i]
+            regex_end = '\n*.*#F{0}F#'.format(element_id)
+            regex = re.compile(regex_end, re.MULTILINE)
+            element = regex.split(regex_element)[0]
+
             section_elements.append((element_id, element))
+            i += 1
 
         return section_elements

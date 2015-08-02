@@ -4,6 +4,8 @@ import unittest
 import fixtures
 from parser import BoletinParser
 
+BOLETIN_PATH = './fixture_files'
+
 class TestBoletinSeccion(unittest.TestCase):
     def test_when_boletin_has_seccion_adjudicaciones(self):
         boletin =  BoletinParser(fixtures.boletines[1]);
@@ -148,7 +150,7 @@ BLOQUE2
         modulos = boletin.get_section_elements("Servicios Tres Palabras Audiovisuales")
         self.assertEqual(len(modulos), 2)
 
-    def test_when_boletin_returns_modulos_seccion_dictameneS(self):
+    def test_when_boletin_returns_modulos_seccion_dictamenes(self):
         boletin = BoletinParser(fixtures.boletines[1])
         boletin.section_names = ['ADJUDICACIONES', 'DICTAMENES DE EVALUACION', 'LOCACIONES INMUEBLES (LOC)']
         modulos = boletin.get_section_elements("Dictámenes de Evaluación")
@@ -159,6 +161,15 @@ BLOQUE2
         section_names = boletin.get_sections_names()
         self.assertEqual(len(section_names), 8)
         self.assertEqual(section_names[7], 'DICTAMENES DE EVALUACION')
+
+    def test_get_boletin_section_elements_from_a_boletin_file(self):
+        boletin_filename = '/20150720-03.txt'
+        with open(BOLETIN_PATH + boletin_filename, 'r') as boletin_file:
+            boletin_str = boletin_file.read()
+            
+        boletin = BoletinParser(boletin_str)
+        elements = boletin.get_section_elements("Adjudicaciones")
+        self.assertEqual(len(elements), 16)
 
 if __name__ == '__main__':
     unittest.main()
