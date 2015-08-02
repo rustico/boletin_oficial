@@ -20,7 +20,7 @@ class TestAdjudicaciones(unittest.TestCase):
     def test_when_adjudicacion_0_return_proveedor(self):
         adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[0])
         proveedores = adjudicacion.get_proveedores()
-        self.assertTrue("METEO S.A. " in proveedores)
+        self.assertTrue("METEO S.A." in proveedores)
 
     def test_when_adjudicacion_0_return_proveedor2(self):
         adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[8])
@@ -134,9 +134,24 @@ class TestAdjudicaciones(unittest.TestCase):
         adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[6])
         self.assertEqual(adjudicacion.get_objeto(), "Mantenimiento Edilicio.")
 
-#    def test_when_adjudicacion_7_return_objeto(self):
-#        adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[7])
-#        self.assertEqual(adjudicacion.get_objeto(), "No tiene un objeto de adjudicacion")
+    class TestAdjudicacion10(unittest.TestCase):
+        def setUp(self):
+            self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[10])
+            
+        def test_get_entidad_publica(self):
+            entidad_publica = self.adjudicacion.get_entidad_publica()
+            self.assertEqual(entidad_publica , "GENDARMERÍA NACIONAL ARGENTINA")
+
+        def test_get_proveedores(self):
+            proveedores = self.adjudicacion.get_proveedores()
+            self.assertEqual(len(proveedores), 1)
+            self.assertEqual(proveedores[0], 'REDIMEC S.R.L.')
+
+        def test_get_precios(self):
+            precios = self.adjudicacion.get_precios()
+            self.assertEqual(len(precios), 1)
+
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -461,11 +461,38 @@ Renglón Uno.
 Oferente: RANKO SRL
 Precio total: $ 17.475.LICITACION PUBLICA Nº 14/2011
 Expediente Nº 0252.338/11
-Objeto de la contratación: Servicio de 
+Objeto de la contratación: Servicio de p
 Limpieza del edificio sede de la Agencia 
 Nº 46.
 Renglón Uno.
 Oferente: BET-CLEAN SRL
 Precio total: $ 197.844.e. 13/02/2012 Nº 12896/12 v. 13/02/2012
+""",
+# Adjudicacion 10
+"""
+GENDARMERÍA NACIONAL ARGENTINA
+LICITACIÓN PÚBLICA N° 04/2015
+DISPOSICIÓN DE ADJUDICACIÓN DNG
+N° 0953/2015, del Director Nacional
+de Gendarmería, de fecha 08JUL15
+Expediente N° EC 5-5006/15
+OBJETO: “ADQUISICIÓN DEL SISTEMA DE ACTUALIZACIÓN DE EQUIPAMIENTO AVIÓNICA E
+INSTRUMENTAL PARA DOS (2) HELICÓPTEROS
+BELL HUEY II”.
+
+OFERENTE: REDIMEC S.R.L. (CUIT 3362978390-9).
+RENGLONES N°: 1 y 2.
+ORDEN DE MERITO: 1.
+TOTAL CONSIDERADO: USD 996.000,00.
+FUNDAMENTO: Oferta de precio y calidad conveniente.
+MONTO TOTAL ADJUDICADO: DOLARES ESTADOUNIDENSES NOVECIENTOS NOVENTA Y
+SEÍS MIL (USD 996.000,00).
+LUGAR DE CONSULTA DEL EXPEDIENTE: En el
+Departamento Contrataciones de la Dirección
+del Servicio Administrativo Financiero, Avda
+Antártida Argentina 1480 3° piso, de Lunes a
+Viernes de 08:30 a 13:00 horas. Teléfono fax:
+(011) 4310-2544.
+e. 23/07/2015 N° 128941/15 v. 23/07/2015
 """
 )

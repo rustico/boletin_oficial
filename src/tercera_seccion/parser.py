@@ -2,7 +2,7 @@
 import re
 
 class AdjudicacionParser():
-    ENTIDAD_TOKENS = [" LICITACION ", " CONTRATACION "]
+    ENTIDAD_TOKENS = [" LICITACION ", " CONTRATACION ", " LICITACIÓN ", " CONTRATACIÓN "]
     PROVEEDOR_TOKENS = [ "Empresa", "Firma", "Oferente", "Proveedor", "Adjudicatario", "Razón Social"]
     OBJETO_TOKENS = ["Objeto", "Objeto de la contratación"]
     PRECIO_TOKENS = [ "U$S", "$" ]
@@ -17,7 +17,7 @@ class AdjudicacionParser():
         for entidad in self.ENTIDAD_TOKENS:
             find_index = texto.find(entidad)
             if find_index != -1:
-                return texto[0: find_index]
+                return texto[0: find_index].strip()
 
         return ""
 
@@ -31,7 +31,7 @@ class AdjudicacionParser():
             matchs = atributos_regex.split(proveedor)
 
             if (matchs[0].upper() != ""):
-                proveedores_nombre.append(matchs[0].upper())
+                proveedores_nombre.append(matchs[0].upper().strip())
             #else:
              #   if (matchs[1]):
               #      proveedores_nombre.append(matchs[0].upper())
