@@ -2,7 +2,7 @@
 import re
 
 class AdjudicacionParser():
-    ENTIDAD_TOKENS = [" LICITACION ", " CONTRATACION ", " LICITACIÓN ", " CONTRATACIÓN "]
+    ENTIDAD_TOKENS = [" LICITACION ", " CONTRATACION ", " LICITACIÓN ", " CONTRATACIÓN ", " Expediente "]
     PROVEEDOR_TOKENS = [ "Empresa", "Firma", "Oferente", "Proveedor", "Adjudicatario", "Razón Social"]
     OBJETO_TOKENS = ["Objeto", "Objeto de la contratación"]
     PRECIO_TOKENS = [ "U$S", "$" ]
@@ -22,34 +22,51 @@ class AdjudicacionParser():
         return ""
 
     def get_proveedores(self):
-        atributos_regex = re.compile(",|-\sCuit|Cuit|Por\sPesos|–|\(",re.IGNORECASE | re.MULTILINE)
+        atributos_regex = re.compile(",|-\sCuit|Cuit|Por\sPesos|–|\(|CONTRATACION DIRECTA",re.IGNORECASE | re.MULTILINE)
 
         proveedores = self.__get_elementos_buscados_segun_tokens(self.PROVEEDOR_TOKENS)
         proveedores_nombre = []
-
         for proveedor in proveedores:
-            matchs = atributos_regex.split(proveedor)
+            match = atributos_regex.split(proveedor)
+            if (match[0] != "" and match[0] != "\n"):
+                proveedores_nombre.append(match[0].strip())
 
-            if (matchs[0].upper() != ""):
-                proveedores_nombre.append(matchs[0].upper().strip())
-            #else:
-             #   if (matchs[1]):
-              #      proveedores_nombre.append(matchs[0].upper())
+        # We are going to associate each 'Proveedor' with the money
+        # For that we first split the text by the 'Proveedores'
+        #  then we look if the money is specified before or after the 'Proveedor'
+        #  once we find the money we increment the index 'i' to point to the next 'Proveedor'
+        i = 0
+        proveedores_regex = re.compile('|'.join(proveedores_nombre), re.IGNORECASE)
+        proveedores_sections = proveedores_regex.split(self.texto)
+        proveedores_money = []
+        for section in proveedores_sections:
+            money = self.get_money(section)
+            if len(money) > 0:
+                proveedor_nombre = proveedores_nombre[i].replace('\n', '').strip()
+                proveedores_money.append((proveedor_nombre, money[0]))
+                i += 1
 
-
-        return proveedores_nombre 
+        return proveedores_money
 
 
     def get_objeto(self):
-        # Si no tiene un objeto de adjudicacion, rompe
-        return self.__get_elementos_buscados_segun_tokens(self.OBJETO_TOKENS)[0] 
+        search = self.__get_elementos_buscados_segun_tokens(self.OBJETO_TOKENS)
+        objeto = None
+        if len(search) > 0:
+            objeto = search[0]
+            objeto = objeto.strip().replace('\n', '')
+            
+            if objeto[-1] == '.':
+                objeto = objeto[:-1]
+                
+        return objeto
 
-    def get_precios(self):
-        precios_regex = re.compile(u"""(\$|U\$S)
+    def get_money(self, text):
+        precios_regex = re.compile(u"""(\$|U\$S|USD)
                                       \s*
                                       ([\d*\.*]*,\d*|[\d*\.*]*)""",re.MULTILINE | re.VERBOSE | re.UNICODE)
 
-        precios_texto = precios_regex.findall(self.texto)
+        precios_texto = precios_regex.findall(text)
         precios = []
 
         for moneda, valor_str in precios_texto:
@@ -77,7 +94,7 @@ class AdjudicacionParser():
         for index in range(0, len(matchs), 2):
             for token in tokens:
                 if token.lower() in matchs[index].lower():
-                    elementos.append(matchs[index + 1].strip().replace("\n", " ").replace("  ", " "))
+                    elementos.append(matchs[index + 1])
 
         return elementos
 
