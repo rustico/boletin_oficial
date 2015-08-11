@@ -4,7 +4,7 @@ import re
 class AdjudicacionParser():
     ENTIDAD_TOKENS = [" LICITACION ", " CONTRATACION ", " LICITACIÓN ", " CONTRATACIÓN ", " Expediente "]
     PROVEEDOR_TOKENS = [ "Empresa", "Firma", "Oferente", "Proveedor", "Adjudicatario", "Razón Social"]
-    OBJETO_TOKENS = ["Objeto", "Objeto de la contratación"]
+    OBJETO_TOKENS = ["Objeto", "Objeto de la contratación", "OBJETO DE LA CONTRATACI\xc3\x93N"]
     PRECIO_TOKENS = [ "U$S", "$" ]
 
     def __init__(self, texto = ""):
@@ -39,12 +39,13 @@ class AdjudicacionParser():
         proveedores_regex = re.compile('|'.join(proveedores_nombre), re.IGNORECASE)
         proveedores_sections = proveedores_regex.split(self.texto)
         proveedores_money = []
-        for section in proveedores_sections:
-            money = self.get_money(section)
-            if len(money) > 0:
-                proveedor_nombre = proveedores_nombre[i].replace('\n', '').strip()
-                proveedores_money.append((proveedor_nombre, money[0]))
-                i += 1
+        if proveedores_nombre:
+            for section in proveedores_sections:
+                money = self.get_money(section)
+                if len(money) > 0:
+                    proveedor_nombre = proveedores_nombre[i].replace('\n', '').strip()
+                    proveedores_money.append((proveedor_nombre, money[0]))
+                    i += 1
 
         return proveedores_money
 
@@ -60,7 +61,7 @@ class AdjudicacionParser():
         add_next_line = False
         total_elements = len(elements)
         for i, element in enumerate(elements):
-            if self.OBJETO_TOKENS[0].lower() == last_element or self.OBJETO_TOKENS[1].lower() == last_element:
+            if self.OBJETO_TOKENS[0].lower() == last_element or self.OBJETO_TOKENS[1].lower() == last_element or self.OBJETO_TOKENS[2].lower() == last_element:
                 objeto = element.strip().replace('\n', '')
                 if objeto[-1] != '.':
                     add_next_line = True

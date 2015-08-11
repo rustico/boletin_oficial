@@ -264,6 +264,21 @@ class TestAdjudicacion10(unittest.TestCase):
         self.assertEqual(len(proveedores), 1)
         self.assertEqual(proveedores[0], ('REDIMEC S.R.L.', {'moneda': 'USD', 'valor': 996000.0}))
 
+class TestAdjudicacion11(unittest.TestCase):
+    def setUp(self):
+        self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[11])
+            
+    def test_get_entidad_publica(self):
+        entidad_publica = self.adjudicacion.get_entidad_publica()
+        self.assertEqual(entidad_publica , "MINISTERIO DE EDUCACIÓN DE LA NACIÓN")
+
+    def test_get_objects(self):
+        objects = self.adjudicacion.get_objects()
+        self.assertEqual(objects[0], "ADQUISICIÓN DE PROVISIÓN Y MONTAJE DE MOBILIARIO PARA EL CENTRO DE FORMACIÓN ALFONSINA STORNI UBICADO EN LA CIUDAD DE MAR DEL PLATA")
+
+    def test_get_proveedores(self):
+        proveedores = self.adjudicacion.get_proveedores()
+        self.assertEqual(len(proveedores), 0)
 
 if __name__ == '__main__':
     unittest.main()
