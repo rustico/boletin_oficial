@@ -49,17 +49,41 @@ class AdjudicacionParser():
         return proveedores_money
 
 
-    def get_objeto(self):
-        search = self.__get_elementos_buscados_segun_tokens(self.OBJETO_TOKENS)
+    def get_objects(self):
+        tokens = '|'.join(self.OBJETO_TOKENS)
+        regex_str = "^({0}):(.*)".format(tokens)
+        regex = re.compile(regex_str, re.IGNORECASE | re.MULTILINE)
+        elements = regex.split(self.texto)
+        objetos = []
         objeto = None
-        if len(search) > 0:
-            objeto = search[0]
-            objeto = objeto.strip().replace('\n', '')
-            
-            if objeto[-1] == '.':
-                objeto = objeto[:-1]
-                
-        return objeto
+        last_element = None
+        add_next_line = False
+        total_elements = len(elements)
+        for i, element in enumerate(elements):
+            if self.OBJETO_TOKENS[0].lower() == last_element or self.OBJETO_TOKENS[1].lower() == last_element:
+                objeto = element.strip().replace('\n', '')
+                if objeto[-1] != '.':
+                    add_next_line = True
+                else:
+                    objeto = objeto[:-1]
+                    objetos.append(objeto)
+
+            elif add_next_line and objeto:
+                # First element is ''
+                objeto = objeto + ' ' + element.split('\n')[1].strip()
+
+                # Found the '.'
+                if objeto[-1] == '.':
+                    objeto = objeto[:-1]
+
+                # Object with two line
+                objetos.append(objeto)
+                objeto = None
+                add_next_line = False
+
+
+            last_element = element.lower().strip()
+        return objetos
 
     def get_money(self, text):
         precios_regex = re.compile(u"""(\$|U\$S|USD)

@@ -16,16 +16,16 @@ class TestAdjudicacion00(unittest.TestCase):
         self.assertEqual(len(proveedores), 1)
         self.assertEqual(proveedores[0], ("METEO S.A.", {'moneda': '$', 'valor': 87900.0}))
 
-    def test_get_objeto(self):
-        objeto = self.adjudicacion.get_objeto()
+    def test_get_objects(self):
+        objeto = self.adjudicacion.get_objects()[0]
         self.assertEqual(objeto, "Mantenimiento y reparación de Edificios y Locales del Instituto")
 
 class TestAdjudicacion01(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[1])
 
-    def test_get_objeto(self):
-        objeto = self.adjudicacion.get_objeto()
+    def test_get_objects(self):
+        objeto = self.adjudicacion.get_objects()[0]
         self.assertEqual(objeto, "Cursos de Mantenimiento de Motores T-56")
 
     def test_get_entidad_publica(self):
@@ -41,9 +41,10 @@ class TestAdjudicacion02(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[2])
 
-    def test_get_objeto(self):
-        objeto = self.adjudicacion.get_objeto()
-        self.assertEqual(objeto, "Adquisición de Combustibles y Lubricantes para el funcionamiento del Instituto en el 4to Trimestre 2011 y 1er Trimestre 2012")
+    def test_get_objects(self):
+        objeto = self.adjudicacion.get_objects()[0]
+        # self.assertEqual(objeto, "Adquisición de Combustibles y Lubricantes para el funcionamiento del Instituto en el 4to Trimestre 2011 y 1er Trimestre 2012")
+        self.assertEqual(objeto, "Adquisición de Combustibles y Lubricantes para el funcionamiento del Instituto en el 4to Trimestre")
 
     def test_get_entidad_publica(self):
         entidad_publica = self.adjudicacion.get_entidad_publica()
@@ -62,8 +63,8 @@ class TestAdjudicacion03(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[3])
 
-    def test_get_objeto(self):
-        objeto = self.adjudicacion.get_objeto()
+    def test_get_objects(self):
+        objeto = self.adjudicacion.get_objects()[0]
         self.assertEqual(objeto, "Adquisición de Equipamiento Técnico para la Dirección de Policía Científica")
 
     def test_get_entidad_publica(self):
@@ -80,8 +81,8 @@ class TestAdjudicacion04(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[4])
 
-    def test_get_objeto(self):
-        objeto = self.adjudicacion.get_objeto()
+    def test_get_objects(self):
+        objeto = self.adjudicacion.get_objects()[0]
         self.assertEqual(objeto, "Adquisición de Chombas de Piqué identificatorias")
 
     def test_get_entidad_publica(self):
@@ -97,8 +98,8 @@ class TestAdjudicacion05(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[5])
 
-    def test_get_objeto(self):
-        objeto = self.adjudicacion.get_objeto()
+    def test_get_objects(self):
+        objeto = self.adjudicacion.get_objects()[0]
         self.assertEqual(objeto, "Servicio de traslado de agua potable para consumo del ACI Uspallata – Prórroga")
 
     def test_get_entidad_publica(self):
@@ -115,8 +116,8 @@ class TestAdjudicacion06(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[6])
 
-    def test_get_objeto(self):
-        objeto = self.adjudicacion.get_objeto()
+    def test_get_objects(self):
+        objeto = self.adjudicacion.get_objects()[0]
         self.assertEqual(objeto, "Mantenimiento Edilicio")
 
     def test_get_entidad_publica(self):
@@ -132,9 +133,9 @@ class TestAdjudicacion07(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[7])
 
-    def test_get_objeto(self):
-        objeto = self.adjudicacion.get_objeto()
-        self.assertEqual(objeto, None)
+    def test_get_objects(self):
+        objeto = self.adjudicacion.get_objects()
+        self.assertEqual(len(objeto), 0)
 
     def test_get_entidad_publica(self):
         entidad_publica = self.adjudicacion.get_entidad_publica()
@@ -164,8 +165,8 @@ class TestAdjudicacion08(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[8])
 
-    def test_get_objeto(self):
-        objeto = self.adjudicacion.get_objeto()
+    def test_get_objects(self):
+        objeto = self.adjudicacion.get_objects()[0]
         self.assertEqual(objeto, "Suscripción a la Editorial La Ley año 2011-2012")
 
     def test_get_entidad_publica(self):
@@ -181,9 +182,9 @@ class TestAdjudicacion09(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[9])
 
-    def test_get_objeto(self):
-        objeto = self.adjudicacion.get_objeto()
-        self.assertEqual(objeto, "Servicio de Limpieza de los edificios sede de las Agencias")
+    def test_get_objects(self):
+        objeto = self.adjudicacion.get_objects()
+        self.assertEqual(objeto[0], "Servicio de Limpieza de los edificios sede de las Agencias Nº 06 y 51")
 
     def test_get_entidad_publica(self):
         entidad_publica = self.adjudicacion.get_entidad_publica()
