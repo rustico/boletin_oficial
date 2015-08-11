@@ -9,26 +9,25 @@ from boletin.parser import BoletinParser
 from tercera_seccion.parser  import AdjudicacionParser
 
 def load(date, boletin_str):
+    print(date)
     boletin = BoletinParser(boletin_str)
     elements = boletin.get_section_elements("Adjudicaciones")
-    
+
+    date_str = datetime.strftime(date, '%Y%m%d')
     for element in elements:
+        element_id = element[0]
+        logging.info('[%s - %s]', date_str, element_id)
         adjudicacion_id, adjudicacion_str = element
         adjudicacion  = AdjudicacionParser(adjudicacion_str)
 
-        import ipdb; ipdb.set_trace()
         entidad_publica = adjudicacion.get_entidad_publica()
         entidad_publica = unidecode(entidad_publica.decode('utf-8'))
-        objeto = adjudicacion.get_objeto()
-        objeto = unidecode(objeto.decode('utf-8'))
-        precios = adjudicacion.get_precios()
+        objects = adjudicacion.get_objects()
         proveedores = adjudicacion.get_proveedores()
-        proveedores_precios = zip(proveedores, precios)
+        if len(objects) != len(proveedores):
+            logging.error('[%s - %s]: Objects: %d Proveedores: %d', date_str, element_id, len(objects), len(proveedores))
 
-        print(date)
-        print(adjudicacion_str)
-        print(adjudicacion, entidad_publica, objeto, proveedores_precios)
-        break
+        print(adjudicacion, entidad_publica, proveedores)
 
     exit(1)
     
