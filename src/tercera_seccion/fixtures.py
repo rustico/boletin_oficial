@@ -614,6 +614,151 @@ Contrataciones - Cdo I Br Bl - Figueroa y Pujol
 - Tandil - Pcia de Bs As, de lunes a viernes de
 0800 a 1200 hs.
 e. 23/07/2015 N° 129026/15 v. 23/07/2015
-"""
-    
+""",
+# Adjudicacion 13 / First Proveedor without money
+"""EJERCITO ARGENTINO
+COLEGIO MILITAR DE LA NACION
+LICITACION PUBLICA Nº 13/2011
+Expediente Nº MK11-1731/5
+Objeto de la contratación: Adquisición 
+de Combustibles y Lubricantes para el fun-
+cionamiento del Instituto en el 4to Trimestre 
+2011 y 1er Trimestre 2012.
+Clase: De Etapa Unica Nacional
+Modalidad: Sin Modalidad
+Adjudicaciones:
+Orden Nº: 1
+Firma: LEONARDO MAZZEO
+Renglones adjudicados: 0011, 0015, 0016, 
+0017, 0018.
+Orden Nº: 2
+Firma: DISTRIBUIDORA SYNERGIA S.R.L.
+Renglones adjudicados: 0003, 0005, 0006, 
+0009, 0020.
+Importe adjudicado: $ 19.621,45.
+Orden Nº: 3
+Firma: SUALIER SA
+Renglones adjudicados: 0001, 0002, 0022, 
+0023.
+Importe adjudicado: $ 686.950,00.
+Orden Nº: 4
+Firma: VIMI S.A.
+Renglones adjudicados: 0004, 0007, 0008, 
+0010, 0012, 0013, 0014, 0021.
+Importe adjudicado: $ 34.893,80.
+Orden Nº: 8
+Firma: CAÑUELAS GAS S.A.
+Renglón adjudicado: 0019.
+Importe adjudicado: $ 15.561,00.
+e. 30/11/2011 Nº 154615/11 v. 30/11/2011
+""",
+# Adjudicacion 14 / Second Proveedor without money
+"""EJERCITO ARGENTINO
+COLEGIO MILITAR DE LA NACION
+LICITACION PUBLICA Nº 13/2011
+Expediente Nº MK11-1731/5
+Objeto de la contratación: Adquisición 
+de Combustibles y Lubricantes para el fun-
+cionamiento del Instituto en el 4to Trimestre 
+2011 y 1er Trimestre 2012.
+Clase: De Etapa Unica Nacional
+Modalidad: Sin Modalidad
+Adjudicaciones:
+Orden Nº: 1
+Firma: LEONARDO MAZZEO
+Renglones adjudicados: 0011, 0015, 0016, 
+0017, 0018.
+Importe adjudicado: $ 19.906,00.
+Orden Nº: 2
+Firma: DISTRIBUIDORA SYNERGIA S.R.L.
+Renglones adjudicados: 0003, 0005, 0006, 
+0009, 0020.
+Orden Nº: 3
+Firma: SUALIER SA
+Renglones adjudicados: 0001, 0002, 0022, 
+0023.
+Importe adjudicado: $ 686.950,00.
+Orden Nº: 4
+Firma: VIMI S.A.
+Renglones adjudicados: 0004, 0007, 0008, 
+0010, 0012, 0013, 0014, 0021.
+Importe adjudicado: $ 34.893,80.
+Orden Nº: 8
+Firma: CAÑUELAS GAS S.A.
+Renglón adjudicado: 0019.
+Importe adjudicado: $ 15.561,00.
+e. 30/11/2011 Nº 154615/11 v. 30/11/2011
+""",
+# Adjudicacion 15 / Last Proveedor without money
+"""EJERCITO ARGENTINO
+COLEGIO MILITAR DE LA NACION
+LICITACION PUBLICA Nº 13/2011
+Expediente Nº MK11-1731/5
+Objeto de la contratación: Adquisición 
+de Combustibles y Lubricantes para el fun-
+cionamiento del Instituto en el 4to Trimestre 
+2011 y 1er Trimestre 2012.
+Clase: De Etapa Unica Nacional
+Modalidad: Sin Modalidad
+Adjudicaciones:
+Orden Nº: 1
+Firma: LEONARDO MAZZEO
+Renglones adjudicados: 0011, 0015, 0016, 
+0017, 0018.
+Importe adjudicado: $ 19.906,00.
+Orden Nº: 2
+Firma: DISTRIBUIDORA SYNERGIA S.R.L.
+Renglones adjudicados: 0003, 0005, 0006, 
+0009, 0020.
+Importe adjudicado: $ 19.621,45.
+Orden Nº: 3
+Firma: SUALIER SA
+Renglones adjudicados: 0001, 0002, 0022, 
+0023.
+Importe adjudicado: $ 686.950,00.
+Orden Nº: 4
+Firma: VIMI S.A.
+Renglones adjudicados: 0004, 0007, 0008, 
+0010, 0012, 0013, 0014, 0021.
+Importe adjudicado: $ 34.893,80.
+Orden Nº: 8
+Firma: CAÑUELAS GAS S.A.
+Renglón adjudicado: 0019.
+e. 30/11/2011 Nº 154615/11 v. 30/11/2011
+""",
+# Adjudicacion 16 / Multiples Proveedor without money
+"""EJERCITO ARGENTINO
+COLEGIO MILITAR DE LA NACION
+LICITACION PUBLICA Nº 13/2011
+Expediente Nº MK11-1731/5
+Objeto de la contratación: Adquisición 
+de Combustibles y Lubricantes para el fun-
+cionamiento del Instituto en el 4to Trimestre 
+2011 y 1er Trimestre 2012.
+Clase: De Etapa Unica Nacional
+Modalidad: Sin Modalidad
+Adjudicaciones:
+Orden Nº: 1
+Firma: LEONARDO MAZZEO
+Renglones adjudicados: 0011, 0015, 0016, 
+0017, 0018.
+Orden Nº: 2
+Firma: DISTRIBUIDORA SYNERGIA S.R.L.
+Renglones adjudicados: 0003, 0005, 0006, 
+0009, 0020.
+Importe adjudicado: $ 19.621,45.
+Orden Nº: 3
+Firma: SUALIER SA
+Renglones adjudicados: 0001, 0002, 0022, 
+0023.
+Orden Nº: 4
+Firma: VIMI S.A.
+Renglones adjudicados: 0004, 0007, 0008, 
+0010, 0012, 0013, 0014, 0021.
+Importe adjudicado: $ 34.893,80.
+Orden Nº: 8
+Firma: CAÑUELAS GAS S.A.
+Renglón adjudicado: 0019.
+e. 30/11/2011 Nº 154615/11 v. 30/11/2011
+"""    
 )

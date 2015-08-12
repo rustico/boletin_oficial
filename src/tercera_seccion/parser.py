@@ -31,23 +31,35 @@ class AdjudicacionParser():
             if (match[0] != "" and match[0] != "\n"):
                 proveedores_nombre.append(match[0].strip())
 
-        # We are going to associate each 'Proveedor' with the money
-        # For that we first split the text by the 'Proveedores'
-        #  then we look if the money is specified before or after the 'Proveedor'
-        #  once we find the money we increment the index 'i' to point to the next 'Proveedor'
-        i = 0
+        if not proveedores_nombre:
+            return []
+
+        # We split the section by the 'Proveedor' name in (len(proveedores_nombre) + 1) sections
         proveedores_regex = re.compile('|'.join(proveedores_nombre), re.IGNORECASE)
         proveedores_sections = proveedores_regex.split(self.texto)
+
+        # So we need to check if the money is before or after the 'Proveedor' name
+        # If this is True we add the proveedor to the list
+        first_section = proveedores_sections[0]
+        money = self.get_money(first_section)
+        if len(money) > 0:
+            proveedores_sections = proveedores_sections[:-1]
+        else:
+            proveedores_sections = proveedores_sections[1:]
+
         proveedores_money = []
-        if proveedores_nombre:
-            for section in proveedores_sections:
-                money = self.get_money(section)
-                if len(money) > 0:
-                    proveedor_nombre = proveedores_nombre[i].replace('\n', '').strip()
-                    if proveedor_nombre[-1] == '.':
-                        proveedor_nombre = proveedor_nombre[:-1]
-                    proveedores_money.append((proveedor_nombre, money[0]))
-                    i += 1
+        proveedor_money = None
+        for i, section in enumerate(proveedores_sections):
+            money = self.get_money(section)
+            if len(money) > 0:
+                proveedor_money = money[0]
+
+            proveedor_nombre = proveedores_nombre[i].replace('\n', '')
+            if proveedor_nombre[-1] == '.':
+                proveedor_nombre = proveedor_nombre[:-1]
+                
+            proveedores_money.append((proveedor_nombre, proveedor_money))
+            proveedor_money = None
 
         return proveedores_money
 

@@ -301,5 +301,61 @@ class TestAdjudicacion12(unittest.TestCase):
         self.assertEqual(proveedores[2], ('MAXXILIMP SRL', {'moneda': '$', 'valor': 26586.09}))
         self.assertEqual(proveedores[3], ('HENNING JUAN FEDERICO', {'moneda': '$', 'valor': 31949.20}))
 
+class TestAdjudicacion13(unittest.TestCase):
+    """ Same Adjudicacion has Adjudicacion2 but we have the first Proveedor without money """
+    def setUp(self):
+        self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[13])
+            
+    def test_get_proveedores(self):
+        proveedores = self.adjudicacion.get_proveedores()
+        self.assertEqual(len(proveedores), 5)
+        self.assertEqual(proveedores[0], ("LEONARDO MAZZEO", None))
+        self.assertEqual(proveedores[1], ("DISTRIBUIDORA SYNERGIA S.R.L", {'moneda': '$', 'valor': 19621.45}))
+        self.assertEqual(proveedores[2], ("SUALIER SA", {'moneda': '$', 'valor': 686950.0}))
+        self.assertEqual(proveedores[3], ("VIMI S.A", {'moneda': '$', 'valor': 34893.80}))
+        self.assertEqual(proveedores[4], ("CAÑUELAS GAS S.A", {'moneda': '$', 'valor': 15561.0}))
+
+class TestAdjudicacion14(unittest.TestCase):
+    """ Same Adjudicacion has Adjudicacion2 but we have the second Proveedor without money """
+    def setUp(self):
+        self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[14])
+            
+    def test_get_proveedores(self):
+        proveedores = self.adjudicacion.get_proveedores()
+        self.assertEqual(len(proveedores), 5)
+        self.assertEqual(proveedores[0], ("LEONARDO MAZZEO", {'moneda': '$', 'valor': 19906.0}))
+        self.assertEqual(proveedores[1], ("DISTRIBUIDORA SYNERGIA S.R.L", None))
+        self.assertEqual(proveedores[2], ("SUALIER SA", {'moneda': '$', 'valor': 686950.0}))
+        self.assertEqual(proveedores[3], ("VIMI S.A", {'moneda': '$', 'valor': 34893.80}))
+        self.assertEqual(proveedores[4], ("CAÑUELAS GAS S.A", {'moneda': '$', 'valor': 15561.0}))
+
+class TestAdjudicacion15(unittest.TestCase):
+    """ Same Adjudicacion has Adjudicacion2 but we have the last Proveedor without money """
+    def setUp(self):
+        self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[15])
+            
+    def test_get_proveedores(self):
+        proveedores = self.adjudicacion.get_proveedores()
+        self.assertEqual(len(proveedores), 5)
+        self.assertEqual(proveedores[0], ("LEONARDO MAZZEO", {'moneda': '$', 'valor': 19906.0}))
+        self.assertEqual(proveedores[1], ("DISTRIBUIDORA SYNERGIA S.R.L", {'moneda': '$', 'valor': 19621.45}))        
+        self.assertEqual(proveedores[2], ("SUALIER SA", {'moneda': '$', 'valor': 686950.0}))
+        self.assertEqual(proveedores[3], ("VIMI S.A", {'moneda': '$', 'valor': 34893.80}))
+        self.assertEqual(proveedores[4], ("CAÑUELAS GAS S.A", None))
+
+class TestAdjudicacion16(unittest.TestCase):
+    """ Same Adjudicacion has Adjudicacion2 but we have the multiples Proveedor without money """
+    def setUp(self):
+        self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[16])
+            
+    def test_get_proveedores(self):
+        proveedores = self.adjudicacion.get_proveedores()
+        self.assertEqual(len(proveedores), 5)
+        self.assertEqual(proveedores[0], ("LEONARDO MAZZEO", None))
+        self.assertEqual(proveedores[1], ("DISTRIBUIDORA SYNERGIA S.R.L", {'moneda': '$', 'valor': 19621.45}))
+        self.assertEqual(proveedores[2], ("SUALIER SA", None))
+        self.assertEqual(proveedores[3], ("VIMI S.A", {'moneda': '$', 'valor': 34893.80}))
+        self.assertEqual(proveedores[4], ("CAÑUELAS GAS S.A", None))
+
 if __name__ == '__main__':
     unittest.main()
