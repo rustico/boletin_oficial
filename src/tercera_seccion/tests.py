@@ -14,7 +14,7 @@ class TestAdjudicacion00(unittest.TestCase):
     def test_get_proveedores(self):
         proveedores = self.adjudicacion.get_proveedores()
         self.assertEqual(len(proveedores), 1)
-        self.assertEqual(proveedores[0], ("METEO S.A.", {'moneda': '$', 'valor': 87900.0}))
+        self.assertEqual(proveedores[0], ("METEO S.A", {'moneda': '$', 'valor': 87900.0}))
 
     def test_get_objects(self):
         objeto = self.adjudicacion.get_objects()[0]
@@ -35,7 +35,7 @@ class TestAdjudicacion01(unittest.TestCase):
     def test_get_proveedores(self):
         proveedores = self.adjudicacion.get_proveedores()
         self.assertEqual(len(proveedores), 1)
-        self.assertEqual(proveedores[0], ("CAE USA INC.", {'moneda': 'U$S', 'valor': 74076.0}))
+        self.assertEqual(proveedores[0], ("CAE USA INC", {'moneda': 'U$S', 'valor': 74076.0}))
 
 class TestAdjudicacion02(unittest.TestCase):
     def setUp(self):
@@ -54,10 +54,10 @@ class TestAdjudicacion02(unittest.TestCase):
         proveedores = self.adjudicacion.get_proveedores()
         self.assertEqual(len(proveedores), 5)
         self.assertEqual(proveedores[0], ("LEONARDO MAZZEO", {'moneda': '$', 'valor': 19906.0}))
-        self.assertEqual(proveedores[1], ("DISTRIBUIDORA SYNERGIA S.R.L.", {'moneda': '$', 'valor': 19621.45}))
+        self.assertEqual(proveedores[1], ("DISTRIBUIDORA SYNERGIA S.R.L", {'moneda': '$', 'valor': 19621.45}))
         self.assertEqual(proveedores[2], ("SUALIER SA", {'moneda': '$', 'valor': 686950.0}))
-        self.assertEqual(proveedores[3], ("VIMI S.A.", {'moneda': '$', 'valor': 34893.80}))
-        self.assertEqual(proveedores[4], ("CAÑUELAS GAS S.A.", {'moneda': '$', 'valor': 15561.0}))
+        self.assertEqual(proveedores[3], ("VIMI S.A", {'moneda': '$', 'valor': 34893.80}))
+        self.assertEqual(proveedores[4], ("CAÑUELAS GAS S.A", {'moneda': '$', 'valor': 15561.0}))
 
 class TestAdjudicacion03(unittest.TestCase):
     def setUp(self):
@@ -74,8 +74,8 @@ class TestAdjudicacion03(unittest.TestCase):
     def test_get_proveedores(self):
         proveedores = self.adjudicacion.get_proveedores()
         self.assertEqual(len(proveedores), 2)
-        self.assertEqual(proveedores[0], ("TECNOELECTRIC S.R.L.", {'moneda': '$', 'valor': 594.0}))
-        self.assertEqual(proveedores[1], ("PROMETIN S.A.", {'moneda': '$', 'valor': 8577.0}))
+        self.assertEqual(proveedores[0], ("TECNOELECTRIC S.R.L", {'moneda': '$', 'valor': 594.0}))
+        self.assertEqual(proveedores[1], ("PROMETIN S.A", {'moneda': '$', 'valor': 8577.0}))
 
 class TestAdjudicacion04(unittest.TestCase):
     def setUp(self):
@@ -92,7 +92,7 @@ class TestAdjudicacion04(unittest.TestCase):
     def test_get_proveedores(self):
         proveedores = self.adjudicacion.get_proveedores()
         self.assertEqual(len(proveedores), 1)
-        self.assertEqual(proveedores[0], ("FEDERICO LOPEZ.", {'moneda': '$', 'valor': 44884.66}))
+        self.assertEqual(proveedores[0], ("FEDERICO LOPEZ", {'moneda': '$', 'valor': 44884.66}))
 
 class TestAdjudicacion05(unittest.TestCase):
     def setUp(self):
@@ -109,8 +109,8 @@ class TestAdjudicacion05(unittest.TestCase):
     def test_get_proveedores(self):
         proveedores = self.adjudicacion.get_proveedores()
         self.assertEqual(len(proveedores), 2)
-        self.assertEqual(proveedores[0], ("PINCOLINI Y PINCOLINI S.H.", {'moneda': '$', 'valor': 33900.0}))
-        self.assertEqual(proveedores[1], ("LOPEZ FEDERICO.", {'moneda': '$', 'valor': 2756.85}))
+        self.assertEqual(proveedores[0], ("PINCOLINI Y PINCOLINI S.H", {'moneda': '$', 'valor': 33900.0}))
+        self.assertEqual(proveedores[1], ("LOPEZ FEDERICO", {'moneda': '$', 'valor': 2756.85}))
 
 class TestAdjudicacion06(unittest.TestCase):
     def setUp(self):
@@ -127,7 +127,7 @@ class TestAdjudicacion06(unittest.TestCase):
     def test_get_proveedores(self):
         proveedores = self.adjudicacion.get_proveedores()
         self.assertEqual(len(proveedores), 1)
-        self.assertEqual(proveedores[0], ("COOP DE TRABAJO PADRE HURATDO LTDA.", {'moneda': '$', 'valor': 337853.75}))
+        self.assertEqual(proveedores[0], ("COOP DE TRABAJO PADRE HURATDO LTDA", {'moneda': '$', 'valor': 337853.75}))
         
 class TestAdjudicacion07(unittest.TestCase):
     def setUp(self):
@@ -147,19 +147,19 @@ class TestAdjudicacion07(unittest.TestCase):
         self.assertEqual(len(proveedores), 14)
         
         self.assertEqual(proveedores[0],('ANALISTAS EMPRESARIOS', {'moneda': '$', 'valor': 715480.0}))
-        self.assertEqual(proveedores[1],('BASANI S.A.', {'moneda': '$', 'valor': 7572.0}))
+        self.assertEqual(proveedores[1],('BASANI S.A', {'moneda': '$', 'valor': 7572.0}))
         self.assertEqual(proveedores[2],('ALFOMBRAS ADEKOR OMAR A', {'moneda': '$', 'valor': 25760.0}))
         self.assertEqual(proveedores[3],('ALFOMBRAS ADEKOR OMAR A', {'moneda': '$', 'valor': 73600.0}))
         self.assertEqual(proveedores[4],('ADSUR SA - ASCENSORES', {'moneda': '$', 'valor': 445387.0}))
-        self.assertEqual(proveedores[5],('BONIFACIO S.A.', {'moneda': '$', 'valor': 478022.4}))
+        self.assertEqual(proveedores[5],('BONIFACIO S.A', {'moneda': '$', 'valor': 478022.4}))
         self.assertEqual(proveedores[6],('LIBRERIA PAPELERIA BUENOS', {'moneda': '$', 'valor': 184500.0}))
         self.assertEqual(proveedores[7],('NUCLEAR CONTROL SOCIEDAD ANONIMA', {'moneda': '$', 'valor': 528360.0}))
         self.assertEqual(proveedores[8],('BIONICS DE ROBERTO', {'moneda': '$', 'valor': 271148.0}))
         self.assertEqual(proveedores[9],('JOSE EDUARDO LAURITO', {'moneda': '$', 'valor': 27190.0}))
-        self.assertEqual(proveedores[10],('UNIVERSIDAD TECNOLOGICA NAC.', {'moneda': '$', 'valor': 676390.0}))
+        self.assertEqual(proveedores[10],('UNIVERSIDAD TECNOLOGICA NAC', {'moneda': '$', 'valor': 676390.0}))
         self.assertEqual(proveedores[11],('LEPERA LUCIO ALBERTO', {'moneda': '$', 'valor': 137116.0}))
         self.assertEqual(proveedores[12],('SERBECO S.A', {'moneda': '$', 'valor': 76000.0}))
-        self.assertEqual(proveedores[13],('NUEVO MILENIO SRL.', {'moneda': '$', 'valor': 26779.5})) 
+        self.assertEqual(proveedores[13],('NUEVO MILENIO SRL', {'moneda': '$', 'valor': 26779.5})) 
 
 class TestAdjudicacion08(unittest.TestCase):
     def setUp(self):
@@ -176,7 +176,7 @@ class TestAdjudicacion08(unittest.TestCase):
     def test_get_proveedores(self):
         proveedores = self.adjudicacion.get_proveedores()
         self.assertEqual(len(proveedores), 1)
-        self.assertEqual(proveedores[0], ("LA LEY S.A.", {'moneda': '$', 'valor': 9500.0}))
+        self.assertEqual(proveedores[0], ("LA LEY S.A", {'moneda': '$', 'valor': 9500.0}))
 
 class TestAdjudicacion09(unittest.TestCase):
     def setUp(self):
@@ -193,30 +193,30 @@ class TestAdjudicacion09(unittest.TestCase):
         self.assertEqual(objects[5], "Custodia del edificio sede de la Agencia Nº 51")
         self.assertEqual(objects[6], "Custodia del edificio sede de la Agencia Nº 06")
         # TODO
-        # self.assertEqual(objects[7], "Reparación de Cañería Estanca del tanque cisterna del edificio sede de la Agencia Nº 51.") 
+        # self.assertEqual(objects[7], "Reparación de Cañería Estanca del tanque cisterna del edificio sede de la Agencia Nº 51") 
         self.assertEqual(objects[7], "Reparación de Cañería Estanca del tanque cisterna del edificio") 
         self.assertEqual(objects[8], "Provisión de Papel Alcalino 80 grs./m2")
         self.assertEqual(objects[9], "Provisión de Utiles de Oficina")
         self.assertEqual(objects[10], "Batería del Gel p/ UPS")
         self.assertEqual(objects[11], "Mantenimiento de Equipos de Aire Acondicionado para el edificio")
-        # self.assertEqual(objects[11], "Mantenimiento de Equipos de Aire Acondicionado para el edificio sede de la Dirección Regional Palermo.")
+        # self.assertEqual(objects[11], "Mantenimiento de Equipos de Aire Acondicionado para el edificio sede de la Dirección Regional Palermo")
         self.assertEqual(objects[12], "Servicio de Desinfección del edificios sede de la Dirección Regional Palermo y de las Agencias Nº  6, 11,")
-        #self.assertEqual(objects[12], "Servicio de Desinfección del edificios sede de la Dirección Regional Palermo y de las Agencias Nº  6, 11, 46 y 51.")
+        #self.assertEqual(objects[12], "Servicio de Desinfección del edificios sede de la Dirección Regional Palermo y de las Agencias Nº  6, 11, 46 y 51")
         self.assertEqual(objects[13], "Servicio de mantenimiento de los Ascensores del edificio sede de la Dirección Regional Palermo")
         self.assertEqual(objects[14], "Provisión de Indumentaria para operativos")
         self.assertEqual(objects[15], "Adquisición de Papel Obra A4")
         self.assertEqual(objects[16], "Serv. Correctivo y de mantenimiento de los Ascensores de la")
-        #self.assertEqual(objects[16], "Serv. Correctivo y de mantenimiento de los Ascensores de la Agencia Nº 51.")
+        #self.assertEqual(objects[16], "Serv. Correctivo y de mantenimiento de los Ascensores de la Agencia Nº 51")
         self.assertEqual(objects[17], "CD-UPS de Agencia Nº 46, reubicación /adecuación")
         self.assertEqual(objects[18], "Locación del Edificio Sede de la Agencia Nº 06")
         self.assertEqual(objects[19], "Mantenimiento de la iluminación de las Salidas de Emergencia de")
-        #self.assertEqual(objects[19], "Mantenimiento de la iluminación de las Salidas de Emergencia de la Dirección Regional Palermo y de las Agencias Nº 6, 11, 46 y 51.")
+        #self.assertEqual(objects[19], "Mantenimiento de la iluminación de las Salidas de Emergencia de la Dirección Regional Palermo y de las Agencias Nº 6, 11, 46 y 51")
         self.assertEqual(objects[20], "Adquisición de Estanterías para la Agencia Nº 51")
         self.assertEqual(objects[21], "Servicio de Limpieza de Tanques de Agua Potable para los edificios sede de la Dirección Regional Palermo")
-        #self.assertEqual(objects[21], "Servicio de Limpieza de Tanques de Agua Potable para los edificios sede de la Dirección Regional Palermo y de la Agencia Nº 51.")
+        #self.assertEqual(objects[21], "Servicio de Limpieza de Tanques de Agua Potable para los edificios sede de la Dirección Regional Palermo y de la Agencia Nº 51")
         self.assertEqual(objects[22], "Servicio de verificación y/o recarga de Matafuegos de la Dirección Regional Palermo y de las Agencias Nº 6, 11, 46 y 51")
         self.assertEqual(objects[23], "Servicio de p Limpieza del edificio sede de la Agencia")
-        #self.assertEqual(objects[23], "Servicio de p Limpieza del edificio sede de la Agencia Nº 46.")
+        #self.assertEqual(objects[23], "Servicio de p Limpieza del edificio sede de la Agencia Nº 46")
 
     def test_get_entidad_publica(self):
         entidad_publica = self.adjudicacion.get_entidad_publica()
@@ -234,7 +234,7 @@ class TestAdjudicacion09(unittest.TestCase):
         self.assertEqual(proveedores[6], ("POLICIA FEDERAL ARGENTINA", {'moneda': '$', 'valor': 307440.0}))
         self.assertEqual(proveedores[7], ("VAZQUEZ JAVIER RICARDO", {'moneda': '$', 'valor': 360.0}))
         self.assertEqual(proveedores[8], ("PAPELERA ALSINA SA", {'moneda': '$', 'valor': 49126.0}))
-        self.assertEqual(proveedores[9], ("CONGRESO INSUMOS SA.", {'moneda': '$', 'valor': 33192.80}))
+        self.assertEqual(proveedores[9], ("CONGRESO INSUMOS SA", {'moneda': '$', 'valor': 33192.80}))
         self.assertEqual(proveedores[10], ("SIECO SA", {'moneda': '$', 'valor': 7156.0 }))
         self.assertEqual(proveedores[11], ("SICA SRL", {'moneda': '$', 'valor': 49800.0 }))
         self.assertEqual(proveedores[12], ("CIA. FUMIGADORA DEL NORTE", {'moneda': '$', 'valor': 33840.0 }))
@@ -262,7 +262,7 @@ class TestAdjudicacion10(unittest.TestCase):
     def test_get_proveedores(self):
         proveedores = self.adjudicacion.get_proveedores()
         self.assertEqual(len(proveedores), 1)
-        self.assertEqual(proveedores[0], ('REDIMEC S.R.L.', {'moneda': 'USD', 'valor': 996000.0}))
+        self.assertEqual(proveedores[0], ('REDIMEC S.R.L', {'moneda': 'USD', 'valor': 996000.0}))
 
 class TestAdjudicacion11(unittest.TestCase):
     def setUp(self):
@@ -279,6 +279,27 @@ class TestAdjudicacion11(unittest.TestCase):
     def test_get_proveedores(self):
         proveedores = self.adjudicacion.get_proveedores()
         self.assertEqual(len(proveedores), 0)
+
+class TestAdjudicacion12(unittest.TestCase):
+    def setUp(self):
+        self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[12])
+            
+    def test_get_entidad_publica(self):
+        entidad_publica = self.adjudicacion.get_entidad_publica()
+        self.assertEqual(entidad_publica , "EJÉRCITO ARGENTINO COMANDO DE LA IRA BRIGADA BLINDADA")
+
+    def test_get_objects(self):
+        objects = self.adjudicacion.get_objects()
+        self.assertEqual(len(objects), 1)
+        self.assertEqual(objects[0], "ADQUISICION DE ELEMENTOS DE LIMPIEZA PARA EL 2DO TRIM 2015")
+
+    def test_get_proveedores(self):
+        proveedores = self.adjudicacion.get_proveedores()
+        self.assertEqual(len(proveedores), 4)
+        self.assertEqual(proveedores[0], ('KLOSTER NORMA ROSA', {'moneda': '$', 'valor': 15612.08}))
+        self.assertEqual(proveedores[1], ('SUAREZ SANTOS CESAR', {'moneda': '$', 'valor': 30273.86}))
+        self.assertEqual(proveedores[2], ('MAXXILIMP SRL', {'moneda': '$', 'valor': 26586.09}))
+        self.assertEqual(proveedores[3], ('HENNING JUAN FEDERICO', {'moneda': '$', 'valor': 31949.20}))
 
 if __name__ == '__main__':
     unittest.main()

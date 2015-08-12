@@ -533,5 +533,87 @@ SRL $  1.990,00 62 Aceptado CORADIR SA $  439.575,00 63 Ideas Tecnologicas Ace
 $ 32.608,00 Desiertos: 57, 58, 59, 61.
 DICTAMEN Comisión Evaluadora Nro. 51/15.
 e. 23/07/2015 N° 129468/15 v. 23/07/2015
+""",
+# Adjudicacion 12 / 2015-07-23 #4930650
 """
+EJÉRCITO ARGENTINO
+COMANDO DE LA IRA BRIGADA BLINDADA
+LICITACIÓN PÚBLICA N° 2/2015
+Expediente N° 1B14-1441/6
+OBJETO DE LA CONTRATACIÓN: ADQUISICION DE ELEMENTOS DE LIMPIEZA PARA EL
+2DO TRIM 2015.
+
+Resolución Nro 30/2015 de fecha 27 de mayo
+de 2015.
+Desestimar los renglones 02, 04, 05, 06, 09, 21,
+41, 46, 47, 56, 68, 77, 85, 88, 99, 107, 115, 120,
+131, 134, 139, 171, 173, 193, 197, 215, 220, 222,
+de la Oferta Nro 5 de la firma MAXXILIMP S.R.L,
+que siendo económicamente conveniente,
+presentan un bajo rendimiento de acuerdo al
+informe técnico de este Comando.
+Adjudicatario: KLOSTER NORMA ROSA.
+Renglones Nros: 0002 0005 0009 0012 0013
+0032 0037 0046 0064 0070 0088 0089 0097
+0101 0120 0121 0123 0131 0132 0166 0176 0190
+0215 0224.
+Total adjudicado: $ 15.612,08.
+Adjudicatario: SUAREZ SANTOS CESAR.
+Renglones Nros: 0014 0015 0016 0043 0054
+0057 0065 0066 0068 0069 0076 0077 0079
+0080 0084 0086 0087
+0094 0095 0096 0099 0105 0106 0107 0108
+0110 0111 0114 0116 0117 0118 0124 0129 0134
+0135 0138 0142
+0144 0146 0150 0159 0163 0177 0195 0198 0200
+0201 0206 0209 0218 0219 0222 0229 0232
+0234.
+Total adjudicado: $ 30.273,86.
+Adjudicatario: MAXXILIMP SRL.
+Renglones Nros: 0001 0003 0008 0010 0011
+0024 0025 0026 0027 0029 0033 0035 0036
+0048 0049 0052 0055 0058 0059 0060 0061
+0063 0067 0071 0072 0073 0075 0078 0081
+0090 0092 0093 0094 0098 0100 0102 0103
+0113 0119 0122 0128 0130 0133 0136 0140 0141
+0143 0147 0148 0149 0156 0158 0161 0162 0167
+0169 0174 0180 0182 0183 0185 0189 0199 0202
+0203 0204 0205 0210 0217 0224 0225 0226
+0227 0230 0231 0233 0235 0237.
+Total adjudicado: $ 26.586,09.
+Adjudicatario: HENNING JUAN FEDERICO.
+Renglones Nros: 0017 0018 0019 0020 0021
+0022 0023 0028 0030 0031 0034 0039 0040
+0041 0042 0044 0045
+0047 0051 0053 0056 0151 0152 0153 0154
+0157 0160 0164 0165 0168 0171 0172 0173 0178
+0179 0181 0186
+0187 0188 0191 0192 0193 0194 0196 0197 0207
+0208 0211 0212 0214 0220 0221 0223 0230.
+Total adjudicado: $ 31.949,20.
+DESESTIMAR los precios económicamente
+convenientes de los renglones Nro(s) 209, 215,
+224, 230, 231 y 235, por no cumplir con lo requerido de acuerdo al informe técnico, optando
+por el orden de mérito siguiente.
+Declarar FRACASADO los renglones Nro(s) 04,
+50, 62, 74, 82, 85, 91, 104, 109, 112, 115, 125,
+126, 127, 137, 139, 145, 155, 170, 175, 184, 213,
+228, por ser el precio excesivo.
+Declarar FRACASADO los renglones Nro(s)
+06 y 216 por no responder a lo requerido, de
+acuerdo al Informe Técnico.
+
+Declarar FRACASADO los renglones Nro(s) 83
+y 236, por ser desestimada la oferta del único
+oferente que cotizó.
+Declarar DESIERTO los renglones Nro(s) 07 y
+38 por no haber sido cotizados por ningún oferente.
+OBSERVACIONES GENERALES:
+Consulta del expediente: Unidad Operativa de
+Contrataciones - Cdo I Br Bl - Figueroa y Pujol
+- Tandil - Pcia de Bs As, de lunes a viernes de
+0800 a 1200 hs.
+e. 23/07/2015 N° 129026/15 v. 23/07/2015
+"""
+    
 )

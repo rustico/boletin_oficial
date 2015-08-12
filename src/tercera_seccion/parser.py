@@ -44,6 +44,8 @@ class AdjudicacionParser():
                 money = self.get_money(section)
                 if len(money) > 0:
                     proveedor_nombre = proveedores_nombre[i].replace('\n', '').strip()
+                    if proveedor_nombre[-1] == '.':
+                        proveedor_nombre = proveedor_nombre[:-1]
                     proveedores_money.append((proveedor_nombre, money[0]))
                     i += 1
 
