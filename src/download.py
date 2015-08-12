@@ -74,7 +74,7 @@ class PDFThread(Thread):
 
             logging.info('[%s]: Parsing', pdf)
             if not os.path.exists(path_filename_out):
-                subprocess.call(['pdftotext', pdf, path_filename_out])
+                subprocess.call(['java', '-jar', './vendors/pdfbox-app-1.8.10.jar', 'ExtractText', '-force', pdf, path_filename_out])
                 logging.info('[%s]: Parsing OK', pdf)
             else:
                 logging.warning('[%s]: Parsing Already Existed', pdf)                
@@ -104,16 +104,19 @@ def download(date, path = PDF_PATH, sections = ('01', '02', '03'), until = None)
 
     # Iterate through all the dates
     while date <= until:
-        for section in sections:
-            date_str =  date.strftime('%Y%m%d')
-            filename = '{0}-{1}.pdf'.format(date_str, section)
-            download_queue.put({
-                'date': date_str,
-                'section': section,
-                'filename_path': os.path.join(path, filename)
-            })
+        # If Date is a Weekday
+        if date.weekday() < 5:
+            for section in sections:
+                date_str =  date.strftime('%Y%m%d')
+                filename = '{0}-{1}.pdf'.format(date_str, section)
+                download_queue.put({
+                    'date': date_str,
+                    'section': section,
+                    'filename_path': os.path.join(path, filename)
+                })
 
-        download_queue.join()
+            download_queue.join()
+            
         date += delta
 
     # Close all the threads and the queues

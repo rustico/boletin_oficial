@@ -10,9 +10,9 @@ Vagrant.configure(2) do |config|
     sudo apt-get update
     sudo apt-get install -y \ 
          python-dev \
-         git \
-         poppler-utils
-
+         default-jre \
+         git 
+         
     cd /code
     wget https://bootstrap.pypa.io/get-pip.py
     sudo python get-pip.py
