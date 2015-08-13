@@ -778,5 +778,48 @@ Total adjudicado: PESOS CIENTO CINCUENTA Y SEIS MIL QUINIENTOS SEIS CON 00/100
 OBSERVACIONES GENERALES:
 AIELLO MARTIN EZEQUIEL: ADJUDICADO RENGLÓNES NRO(s): 0001 0002 0003 0004 0005.
 e. 04/08/2015 N° 132246/15 v. 04/08/2015
+""",
+# Adjudicacion 18 / 2013-04-26 #4433868
 """
+ADMINISTRACION FEDERAL 
+DE INGRESOS PUBLICOS
+DIRECCION REGIONAL PALERMO
+LICITACION PUBLICA Nº 1/2013
+Expediente Nº 250.622/2013
+Objeto de la contratación: Servicio de lim-
+pieza integral de la Agencia Nº 6, ubicada en la 
+calle Luis María Campos Nº 112, CABA.
+Empresa adjudicada: EZCA SERVICIOS GE-
+NERALES S.A.
+Precio total: $ 407.400,00
+Se encuentra para consulta de los Señores 
+Oferentes la Disposición Nº 17/13 (DI RPAL).
+Lugar de consulta: Rivadavia 1355, 3º Piso, 
+Oficina 304, Ciudad Autónoma de Buenos Ai-
+res, en el horario de 10:00 a 16:00 hs.
+e. 26/04/2013 Nº 27873/13 v. 26/04/2013
+""",
+# Adjudicacion 19 / 2012-12-21 - #4402832
+"""
+MINISTERIO PUBLICO DE LA DEFENSA
+DEFENSORIA GENERAL DE LA NACION
+CONTRATACION DIRECTA Nº 85/2012
+TRAMITE SIMPLIFICADO
+Expediente DGN Nº 1704/12
+Objeto: Adquisición de cinco (5) Equipos 
+de PC de avanzada para el Departamento de 
+Arquitectura.
+Acto de Adjudicación: Resolución AG 
+Nº 876/2012.
+Horario y lugar de consulta del expediente: 
+De 9:30 a 13:00 y 13:30 a 16:00 hs. - San José 
+331, Piso 2º, C.A.B.A.
+Adjudicatario: CORADIR S.A. - CUIT: 
+(30-67338016-2).
+Renglón adjudicado: Nº 1 ($ 27.465,00).
+Precio total con IVA: Pesos veintisie-
+te mil cuatrocientos sesenta y cinco 
+($ 27.465,00).
+e. 21/12/2012 Nº 126516/12 v. 21/12/2012
+""",
 )

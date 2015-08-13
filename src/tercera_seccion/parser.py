@@ -3,7 +3,7 @@ import re
 
 class AdjudicacionParser():
     ENTIDAD_TOKENS = [" LICITACION ", " CONTRATACION ", " LICITACIÓN ", " CONTRATACIÓN ", " Expediente "]
-    PROVEEDOR_TOKENS = [ "Empresa", "Firma", "Oferente", "Proveedor", "Adjudicatario", "Razón Social"]
+    PROVEEDOR_TOKENS = [ "Empresa", "Firma", "Oferente", "Proveedor", "Adjudicatario", "Razón Social", "Empresa adjudicada"]
     OBJETO_TOKENS = ["Objeto", "Objeto de la contratación", "OBJETO DE LA CONTRATACI\xc3\x93N"]
     PRECIO_TOKENS = [ "U$S", "$" ]
 
@@ -45,30 +45,36 @@ class AdjudicacionParser():
         # We remove the text before the first find
         sections = sections[1:]
         proveedores = []
+        regex = re.compile('\s*(.*)\.?\n')
+        regex_attribute_name = re.compile('^[\w\s]+:')
         for section in sections:
-            regex = re.compile('\s*(.*)\.?\n')
             matches = regex.findall(section)
             if len(matches) > 0:
                 proveedor_name = ''
-                for match in matches:
-                    if ':' in match:
+                for i, match in enumerate(matches):
+                    if regex_attribute_name.match(match):
                         break
                     
                     proveedor_name += match
 
                     if proveedor_name[-1] == '.':
                         break
-
                 if not proveedor_name:
                     continue
                 
                 if '(' in proveedor_name:
                     proveedor_name = proveedor_name.split('(')[0]
 
+                if 'CUIT' in proveedor_name.upper():
+                    proveedor_name = proveedor_name.upper().split('CUIT')[0]
+
                 proveedor_name = proveedor_name.strip()
 
                 if proveedor_name[-1] == '.':
-                    proveedor_name = proveedor_name[:-1]
+                    proveedor_name = proveedor_name[:-1].strip()
+
+                if proveedor_name[-1] == '-':
+                    proveedor_name = proveedor_name[:-1].strip()
                     
             else:
                 continue
