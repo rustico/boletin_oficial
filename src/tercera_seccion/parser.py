@@ -22,47 +22,65 @@ class AdjudicacionParser():
         return ""
 
     def get_proveedores(self):
-        atributos_regex = re.compile(",|-\sCuit|Cuit|Por\sPesos|–|\(|CONTRATACION DIRECTA",re.IGNORECASE | re.MULTILINE)
-
-        proveedores = self.__get_elementos_buscados_segun_tokens(self.PROVEEDOR_TOKENS)
-        proveedores_nombre = []
-        for proveedor in proveedores:
-            match = atributos_regex.split(proveedor)
-            if (match[0] != "" and match[0] != "\n"):
-                proveedores_nombre.append(match[0].strip())
-
-        if not proveedores_nombre:
+        # Split the text by the 'Proveedor' tokens
+        regex_str = ':|'.join(self.PROVEEDOR_TOKENS) + ':'
+        regex = re.compile(regex_str, re.IGNORECASE)
+        sections = regex.split(self.texto)
+        
+        # If we didn't find any 'Proveedor' token return an empty list
+        if(len(sections) < 1):
             return []
-
-        # We split the section by the 'Proveedor' name in (len(proveedores_nombre) + 1) sections
-        proveedores_regex = re.compile('|'.join(proveedores_nombre), re.IGNORECASE)
-        proveedores_sections = proveedores_regex.split(self.texto)
 
         # So we need to check if the money is before or after the 'Proveedor' name
         # If this is True we add the proveedor to the list
-        first_section = proveedores_sections[0]
-        money = self.get_money(first_section)
-        if len(money) > 0:
-            proveedores_sections = proveedores_sections[:-1]
+        first_section = sections[0]
+        money_before = False
+        proveedor_money = self.get_money(first_section)
+
+        if proveedor_money:
+            money_before = True
         else:
-            proveedores_sections = proveedores_sections[1:]
-
-        proveedores_money = []
-        proveedor_money = None
-        for i, section in enumerate(proveedores_sections):
-            money = self.get_money(section)
-            if len(money) > 0:
-                proveedor_money = money[0]
-
-            proveedor_nombre = proveedores_nombre[i].replace('\n', '')
-            if proveedor_nombre[-1] == '.':
-                proveedor_nombre = proveedor_nombre[:-1]
-                
-            proveedores_money.append((proveedor_nombre, proveedor_money))
             proveedor_money = None
 
-        return proveedores_money
+        # We remove the text before the first find
+        sections = sections[1:]
+        proveedores = []
+        for section in sections:
+            regex = re.compile('\s*(.*)\.?\n')
+            matches = regex.findall(section)
+            if len(matches) > 0:
+                proveedor_name = ''
+                for match in matches:
+                    if ':' in match:
+                        break
+                    
+                    proveedor_name += match
 
+                    if proveedor_name[-1] == '.':
+                        break
+
+                if not proveedor_name:
+                    continue
+                
+                if '(' in proveedor_name:
+                    proveedor_name = proveedor_name.split('(')[0]
+
+                proveedor_name = proveedor_name.strip()
+
+                if proveedor_name[-1] == '.':
+                    proveedor_name = proveedor_name[:-1]
+                    
+            else:
+                continue
+
+            if money_before:
+                proveedores.append((proveedor_name, proveedor_money))
+                proveedor_money = self.get_money(section)
+            else:
+                proveedor_money = self.get_money(section)
+                proveedores.append((proveedor_name, proveedor_money))
+                
+        return proveedores
 
     def get_objects(self):
         tokens = '|'.join(self.OBJETO_TOKENS)
@@ -116,7 +134,10 @@ class AdjudicacionParser():
 
             precios.append({'moneda' : moneda, 'valor' : valor })
 
-        return precios
+        if len(precios) == 0:
+            return None
+        
+        return precios[0]
 
     def __get_elementos_buscados_segun_tokens(self, tokens):
         atributos_regex = re.compile("(^[a-záéíóúº\s]*):",re.IGNORECASE | re.MULTILINE)

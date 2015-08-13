@@ -146,15 +146,15 @@ class TestAdjudicacion07(unittest.TestCase):
         
         self.assertEqual(len(proveedores), 14)
         
-        self.assertEqual(proveedores[0],('ANALISTAS EMPRESARIOS', {'moneda': '$', 'valor': 715480.0}))
+        self.assertEqual(proveedores[0],('ANALISTAS EMPRESARIOS SRL', {'moneda': '$', 'valor': 715480.0}))
         self.assertEqual(proveedores[1],('BASANI S.A', {'moneda': '$', 'valor': 7572.0}))
-        self.assertEqual(proveedores[2],('ALFOMBRAS ADEKOR OMAR A', {'moneda': '$', 'valor': 25760.0}))
-        self.assertEqual(proveedores[3],('ALFOMBRAS ADEKOR OMAR A', {'moneda': '$', 'valor': 73600.0}))
-        self.assertEqual(proveedores[4],('ADSUR SA - ASCENSORES', {'moneda': '$', 'valor': 445387.0}))
+        self.assertEqual(proveedores[2],('ALFOMBRAS ADEKOR OMAR A COSTANTINO', {'moneda': '$', 'valor': 25760.0}))
+        self.assertEqual(proveedores[3],('ALFOMBRAS ADEKOR OMAR A COSTANTINO', {'moneda': '$', 'valor': 73600.0}))
+        self.assertEqual(proveedores[4],('ADSUR SA - ASCENSORES DEL SUR', {'moneda': '$', 'valor': 445387.0}))
         self.assertEqual(proveedores[5],('BONIFACIO S.A', {'moneda': '$', 'valor': 478022.4}))
-        self.assertEqual(proveedores[6],('LIBRERIA PAPELERIA BUENOS', {'moneda': '$', 'valor': 184500.0}))
+        self.assertEqual(proveedores[6],('LIBRERIA PAPELERIA BUENOS AIRES SRL', {'moneda': '$', 'valor': 184500.0}))
         self.assertEqual(proveedores[7],('NUCLEAR CONTROL SOCIEDAD ANONIMA', {'moneda': '$', 'valor': 528360.0}))
-        self.assertEqual(proveedores[8],('BIONICS DE ROBERTO', {'moneda': '$', 'valor': 271148.0}))
+        self.assertEqual(proveedores[8],('BIONICS DE ROBERTO VALLOUD', {'moneda': '$', 'valor': 271148.0}))
         self.assertEqual(proveedores[9],('JOSE EDUARDO LAURITO', {'moneda': '$', 'valor': 27190.0}))
         self.assertEqual(proveedores[10],('UNIVERSIDAD TECNOLOGICA NAC', {'moneda': '$', 'valor': 676390.0}))
         self.assertEqual(proveedores[11],('LEPERA LUCIO ALBERTO', {'moneda': '$', 'valor': 137116.0}))
@@ -237,7 +237,7 @@ class TestAdjudicacion09(unittest.TestCase):
         self.assertEqual(proveedores[9], ("CONGRESO INSUMOS SA", {'moneda': '$', 'valor': 33192.80}))
         self.assertEqual(proveedores[10], ("SIECO SA", {'moneda': '$', 'valor': 7156.0 }))
         self.assertEqual(proveedores[11], ("SICA SRL", {'moneda': '$', 'valor': 49800.0 }))
-        self.assertEqual(proveedores[12], ("CIA. FUMIGADORA DEL NORTE", {'moneda': '$', 'valor': 33840.0 }))
+        self.assertEqual(proveedores[12], ("CIA. FUMIGADORA DEL NORTE SRL", {'moneda': '$', 'valor': 33840.0 }))
         self.assertEqual(proveedores[13], ("PISO CERO SA", {'moneda': '$', 'valor': 56280.0 }))
         self.assertEqual(proveedores[14], ("FARIÑA ANDREA VIVIANA", {'moneda': '$', 'valor': 9000.0}))
         self.assertEqual(proveedores[15], ("PAPELERA ALSINA SA", {'moneda': '$', 'valor': 47934.60 }))
@@ -357,5 +357,24 @@ class TestAdjudicacion16(unittest.TestCase):
         self.assertEqual(proveedores[3], ("VIMI S.A", {'moneda': '$', 'valor': 34893.80}))
         self.assertEqual(proveedores[4], ("CAÑUELAS GAS S.A", None))
 
+class TestAdjudicacion17(unittest.TestCase):
+    def setUp(self):
+        self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[17])
+            
+    def test_get_entidad_publica(self):
+        entidad_publica = self.adjudicacion.get_entidad_publica()
+        self.assertEqual(entidad_publica , "EJÉRCITO ARGENTINO DIRECCIÓN DE INGENIEROS E INFRAESTRUCTURA")
+
+    def test_get_objects(self):
+        objects = self.adjudicacion.get_objects()
+        self.assertEqual(len(objects), 1)
+        self.assertEqual(objects[0], "SERVICIO DE MANTENIMIENTO Y REPARACION DE VEHICULOS PERTENECIENTE AL BATALLON DE INGENIEROS 601 Y LA DIRECCION DE INGENIEROS E INFRAESTRUCTURA")
+
+    def test_get_proveedores(self):
+        proveedores = self.adjudicacion.get_proveedores()
+        self.assertEqual(len(proveedores), 1)
+        self.assertEqual(proveedores[0], ('AIELLO MARTIN EZEQUIEL', {'moneda': '$', 'valor': 156506.0}))
+
+        
 if __name__ == '__main__':
     unittest.main()
