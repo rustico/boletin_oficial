@@ -18,7 +18,7 @@ Vagrant.configure(2) do |config|
     sudo python get-pip.py
     rm get-pip.py
     sudo pip install virtualenv
-    virtualenv .venv
+    virtualenv .env
 
     source .env/bin/activate
     pip install -r requirements.txt
