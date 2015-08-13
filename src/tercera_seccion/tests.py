@@ -411,7 +411,26 @@ class TestAdjudicacion19(unittest.TestCase):
     def test_get_proveedores(self):
         proveedores = self.adjudicacion.get_proveedores()
         self.assertEqual(len(proveedores), 1)
-        self.assertEqual(proveedores[0], ('CORADIR S.A.', {'moneda': '$', 'valor': 27465.0}))        
+        self.assertEqual(proveedores[0], ('CORADIR S.A.', {'moneda': '$', 'valor': 27465.0}))
+
+        
+class TestAdjudicacion20(unittest.TestCase):
+    def setUp(self):
+        self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[20])
+            
+    def test_get_entidad_publica(self):
+        entidad_publica = self.adjudicacion.get_entidad_publica()
+        self.assertEqual(entidad_publica , "MINISTERIO DE AGRICULTURA, GANADERIA Y PESCA INSTITUTO NACIONAL DE INVESTIGACION Y DESARROLLO PESQUERO")
+
+    def test_get_objects(self):
+        objects = self.adjudicacion.get_objects()
+        self.assertEqual(len(objects), 1)
+        self.assertEqual(objects[0], "Mantenimiento sistemas de cámaras IP")
+
+    def test_get_proveedores(self):
+        proveedores = self.adjudicacion.get_proveedores()
+        self.assertEqual(len(proveedores), 1)
+        self.assertEqual(proveedores[0], ('SEGCON S.A', {'moneda': '$', 'valor': 36300.0}))                
         
 if __name__ == '__main__':
     unittest.main()

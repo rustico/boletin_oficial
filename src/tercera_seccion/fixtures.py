@@ -822,4 +822,49 @@ te mil cuatrocientos sesenta y cinco
 ($ 27.465,00).
 e. 21/12/2012 Nº 126516/12 v. 21/12/2012
 """,
+# Adjudicacion 20 / 2013-05-17 - 4441225
+"""
+MINISTERIO DE AGRICULTURA,
+GANADERIA Y PESCA
+INSTITUTO NACIONAL 
+DE INVESTIGACION 
+Y DESARROLLO PESQUERO
+CONTRATACION DIRECTA Nº 003/2013
+DICTAMEN DE EVALUACION Nº 014/03
+Expediente Nº 030/13
+Objeto: Mantenimiento sistemas de cámaras IP.
+Clase: Sin Clase
+Modalidad: Sin Modalidad
+Preadjudicatario:
+CUIT 30-70853699-3
+Razón Social: SEGCON S.A.
+Renglón: 1
+Importe: $ 36.300,00.
+e. 17/05/2013 Nº 35230/13 v. 17/05/2013
+""",
+# Adjudicacion 21 / 2011-05-10 - 4211881
+"""
+UNIVERSIDAD NACIONAL
+DE MAR DEL PLATA
+LICITACION PRIVADA N° 004/2011
+Expediente N° 1-07/2011
+Objeto: Adquisición de equipo de espectros-
+copia infrarroja con transformada de Fourier.
+Clase: De Etapa Unica Nacional
+Modalidad: Sin Modalidad
+Datos del Acto administrativo de 
+Adjudicación: 
+Tipo: Decisión administrativa  N° 034
+Ejercicio: 2011 
+Fecha: 29-04-11
+Autoridad competente: Secretario de Admi-
+nistración y Coordinación 
+Dependencia: Rectorado
+Adjudicatario: 
+CUIT 30-69228924-9 
+Razón Social: PERKIN ELMER ARGENTI-
+NA S.A.
+Monto adjudicado: U$S 28.200,00 ó 
+$ 113.448,60.
+"""    
 )

@@ -47,7 +47,11 @@ class AdjudicacionParser():
         proveedores = []
         regex = re.compile('\s*(.*)\.?\n')
         regex_attribute_name = re.compile('^[\w\s]+:')
+        regex_cuit = re.compile('^\n?CUIT', re.IGNORECASE)
         for section in sections:
+            if regex_cuit.match(section):
+                continue
+            
             matches = regex.findall(section)
             if len(matches) > 0:
                 proveedor_name = ''
