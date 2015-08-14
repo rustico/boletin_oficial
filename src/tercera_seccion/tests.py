@@ -430,7 +430,45 @@ class TestAdjudicacion20(unittest.TestCase):
     def test_get_proveedores(self):
         proveedores = self.adjudicacion.get_proveedores()
         self.assertEqual(len(proveedores), 1)
-        self.assertEqual(proveedores[0], ('SEGCON S.A', {'moneda': '$', 'valor': 36300.0}))                
+        self.assertEqual(proveedores[0], ('SEGCON S.A', {'moneda': '$', 'valor': 36300.0}))
+
+        
+class TestAdjudicacion21(unittest.TestCase):
+    def setUp(self):
+        self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[21])
+            
+    def test_get_entidad_publica(self):
+        entidad_publica = self.adjudicacion.get_entidad_publica()
+        self.assertEqual(entidad_publica , "UNIVERSIDAD NACIONAL DE MAR DEL PLATA")
+
+    def test_get_objects(self):
+        objects = self.adjudicacion.get_objects()
+        self.assertEqual(len(objects), 1)
+        self.assertEqual(objects[0], "Adquisición de equipo de espectroscopia infrarroja con transformada de Fourier")
+
+    def test_get_proveedores(self):
+        proveedores = self.adjudicacion.get_proveedores()
+        self.assertEqual(len(proveedores), 1)
+        self.assertEqual(proveedores[0], ('PERKIN ELMER ARGENTINA S.A', {'moneda': 'U$S', 'valor': 28200.0}))                        
+
+class TestAdjudicacion22(unittest.TestCase):
+    def setUp(self):
+        self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[22])
+            
+    def test_get_entidad_publica(self):
+        entidad_publica = self.adjudicacion.get_entidad_publica()
+        self.assertEqual(entidad_publica , "EJERCITO ARGENTINO DPTO CONT Y FIN – EMGE")
+
+    def test_get_objects(self):
+        objects = self.adjudicacion.get_objects()
+        self.assertEqual(len(objects), 1)
+        self.assertEqual(objects[0], "Adquisición de Servicios de Consultoría necesaria para el")
+        #self.assertEqual(objects[0], "Adquisición de Servicios de Consultoría necesaria para el marco de trabajo de Ingeniería definido")        
+
+    def test_get_proveedores(self):
+        proveedores = self.adjudicacion.get_proveedores()
+        self.assertEqual(len(proveedores), 1)
+        self.assertEqual(proveedores[0], ('UNIVERSIDAD TECNOLOGICA NACIONAL', {'moneda': '$', 'valor': 106000.0}))                        
         
 if __name__ == '__main__':
     unittest.main()

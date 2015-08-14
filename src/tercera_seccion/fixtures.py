@@ -866,5 +866,34 @@ Razón Social: PERKIN ELMER ARGENTI-
 NA S.A.
 Monto adjudicado: U$S 28.200,00 ó 
 $ 113.448,60.
-"""    
+""",
+# Adjudicacion 22 / 2010-07-05 - 4114609
+"""
+EJERCITO ARGENTINO
+DPTO CONT Y FIN – EMGE
+CONTRATACION DIRECTA N° 04/2010 
+Expediente N° 3T10-0197/5
+Objeto de la contratación: Adquisición de 
+Servicios de Consultoría necesaria para el 
+marco de trabajo de Ingeniería definido.
+Clase: De Etapa Unica Nacional
+Modalidad: Sin Modalidad
+Datos del Acto Administrativo de Adjudicación
+Tipo: Contratación Directa N° 04
+Ejercicio: 2010
+Fecha: 28/06/2010
+Autoridad Competente: General de Brigada 
+Carlos Ignacio Barchuk.
+Dependencia: 374 - 84 - 77 - Dpto. Cont. y 
+Fin. EMGE.
+Fecha y horario de atención al público: Lu-
+nes a viernes de 08.00 a 12.00 horas.
+Adjudicatario:
+Razón Social: UNIVERSIDAD TECNOLOGI-
+CA NACIONAL.
+Monto adjudicado: $ 106.000,00.
+Observaciones: Oferta admisible y conve-
+niente.
+e. 05/07/2010 N° 73636/10 v. 05/07/2010
+"""
 )
