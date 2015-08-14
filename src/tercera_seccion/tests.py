@@ -468,7 +468,26 @@ class TestAdjudicacion22(unittest.TestCase):
     def test_get_proveedores(self):
         proveedores = self.adjudicacion.get_proveedores()
         self.assertEqual(len(proveedores), 1)
-        self.assertEqual(proveedores[0], ('UNIVERSIDAD TECNOLOGICA NACIONAL', {'moneda': '$', 'valor': 106000.0}))                        
+        self.assertEqual(proveedores[0], ('UNIVERSIDAD TECNOLOGICA NACIONAL', {'moneda': '$', 'valor': 106000.0}))
+
+
+class TestAdjudicacion23(unittest.TestCase):
+    def setUp(self):
+        self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[23])
+            
+    def test_get_entidad_publica(self):
+        entidad_publica = self.adjudicacion.get_entidad_publica()
+        self.assertEqual(entidad_publica , "ARMADA ARGENTINA ESTADO MAYOR GENERAL DE LA ARMADA - SGNA DEPARTAMENTO CONTABILIDAD")
+
+    def test_get_objects(self):
+        objects = self.adjudicacion.get_objects()
+        self.assertEqual(len(objects), 1)
+        self.assertEqual(objects[0], "Contratación de servicio de ómnibus")
+
+    def test_get_proveedores(self):
+        proveedores = self.adjudicacion.get_proveedores()
+        self.assertEqual(len(proveedores), 1)
+        self.assertEqual(proveedores[0], ('TRANSPORTES AUTOMOTORES PLUSMAR S.A. - Pedro Mendoza 3453', {'moneda': '$', 'valor': 171600.0}))                        
         
 if __name__ == '__main__':
     unittest.main()

@@ -895,5 +895,23 @@ Monto adjudicado: $ 106.000,00.
 Observaciones: Oferta admisible y conve-
 niente.
 e. 05/07/2010 N° 73636/10 v. 05/07/2010
+""",
+# Adjudicacion 23 / 2013-05-17 4441255
 """
+ARMADA ARGENTINA
+ESTADO MAYOR GENERAL 
+DE LA ARMADA - SGNA
+DEPARTAMENTO CONTABILIDAD
+LICITACION PUBLICA Nº 12/2012
+Expediente/s SGNA,IBE Nº 34/12
+Objeto: Contratación de servicio de ómnibus.
+Orden de Compra Nº 05/13
+Renglón Nº: 1.
+ Viernes 17 de mayo de 2013 tercera sección BOLETIN OFICIAL Nº 32.641 19
+Nombre del Contratista: TRANSPORTES AU-
+TOMOTORES PLUSMAR S.A. - Pedro Mendoza 
+3453 (1888) Ciudad Autónoma de Buenos Aires.
+Precio total adjudicado: $ 171.600,00.
+e. 17/05/2013 Nº 35260/13 v. 17/05/2013
+"""    
 )

@@ -3,7 +3,7 @@ import re
 
 class AdjudicacionParser():
     ENTIDAD_TOKENS = [" LICITACION ", " CONTRATACION ", " LICITACIÓN ", " CONTRATACIÓN ", " Expediente "]
-    PROVEEDOR_TOKENS = [ "Empresa", "Firma", "Oferente", "Proveedor", "Adjudicatario", "Razón Social", "Empresa adjudicada"]
+    PROVEEDOR_TOKENS = [ "Empresa", "Firma", "Oferente", "Proveedor", "Adjudicatario", "Razón Social", "Empresa adjudicada", "Nombre del Contratista"]
     OBJETO_TOKENS = ["Objeto", "Objeto de la contratación", "OBJETO DE LA CONTRATACI\xc3\x93N"]
     PRECIO_TOKENS = [ "U$S", "$" ]
 
