@@ -75,16 +75,19 @@ class BoletinParser():
         # We get the IDs of the element.
         regex = re.compile('#I(\d*)I#', re.MULTILINE)
         elements_ids = regex.findall(seccion_completa)
+        if len(elements_ids) == 0:
+            raise Exception('Without Elements') 
         
         # Split the Boletin in its elements
         regex = re.compile('\n*.*#I\d*I#.*\n', re.MULTILINE)
         regex_elements = regex.split(seccion_completa)
+        regex_elements = filter(lambda x: x, regex_elements)
+        if len(elements_ids) != len(regex_elements):
+            raise Exception('IDs != Elements')
+        
         i = 0
         section_elements = []
         for regex_element in regex_elements:
-            if regex_element == '':
-                continue
-            
             element_id = elements_ids[i]
             regex_end = '\n*.*#F{0}F#'.format(element_id)
             regex = re.compile(regex_end, re.MULTILINE)

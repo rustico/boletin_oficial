@@ -9,28 +9,32 @@ from boletin.parser import BoletinParser
 from tercera_seccion.parser  import AdjudicacionParser
 
 def load(date, boletin_str):
-    print(date)
-    boletin = BoletinParser(boletin_str)
-    elements = boletin.get_section_elements("Adjudicaciones")
-
     date_str = datetime.strftime(date, '%Y%m%d')
-    for element in elements:
-        element_id = element[0]
-        logging.info('[%s - %s]', date_str, element_id)
-        adjudicacion_id, adjudicacion_str = element
-        adjudicacion  = AdjudicacionParser(adjudicacion_str)
+    print(date_str)
+    boletin = BoletinParser(boletin_str)
+    try:
+        elements = boletin.get_section_elements("Adjudicaciones")
+        
+        for element in elements:
+            element_id = element[0]
+            
+            adjudicacion_id, adjudicacion_str = element
+            adjudicacion  = AdjudicacionParser(adjudicacion_str)
+            entidad_publica = adjudicacion.get_entidad_publica()
+            entidad_publica = unidecode(entidad_publica.decode('utf-8'))
+            objects = adjudicacion.get_objects()
+            proveedores = adjudicacion.get_proveedores()
+            
+            if len(proveedores) == 0:
+                logging.warning('[%s - %s] %s | %s', date_str, element_id, entidad_publica, proveedores)
+            else:
+                logging.info('[%s - %s] %s | %s', date_str, element_id, entidad_publica, proveedores)
+                
+            print(adjudicacion, entidad_publica, proveedores)
+                
+    except Exception as e:
+        logging.error('[%s] %s', date_str, e)
 
-        entidad_publica = adjudicacion.get_entidad_publica()
-        entidad_publica = unidecode(entidad_publica.decode('utf-8'))
-        objects = adjudicacion.get_objects()
-        proveedores = adjudicacion.get_proveedores()
-        if len(objects) != len(proveedores):
-            logging.error('[%s - %s]: Objects: %d Proveedores: %d', date_str, element_id, len(objects), len(proveedores))
-
-        print(adjudicacion, entidad_publica, proveedores)
-
-    exit(1)
-    
 if __name__ == '__main__':
     if len(sys.argv) <= 1:
         print >>sys.stderr, 'usage: load_adjudicaciones.py <from date: yyyymmdd> <to date: yyyymmdd>'
