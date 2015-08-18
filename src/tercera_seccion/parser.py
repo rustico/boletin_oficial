@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 import re
+import logging
+from unidecode import unidecode
 
 class AdjudicacionParser():
     ENTIDAD_TOKENS = [" LICITACION ", " CONTRATACION ", " LICITACIÓN ", " CONTRATACIÓN ", " Expediente "]
@@ -184,3 +186,56 @@ class AdjudicacionParser():
                                          .*""", re.VERBOSE | re.MULTILINE | re.UNICODE) 
 
         return last_line_regex.split(texto)[0]
+
+    @staticmethod
+    def get_adjudicaciones(date_str, elements):
+        adjudicaciones = []
+        
+        for element in elements:
+            element_id = element[0]
+            
+            adjudicacion_id, adjudicacion_str = element
+            adjudicacion  = AdjudicacionParser(adjudicacion_str)
+            entidad_publica = adjudicacion.get_entidad_publica()
+            entidad_publica = unidecode(entidad_publica.decode('utf-8'))
+            objects = adjudicacion.get_objects()
+            proveedores = adjudicacion.get_proveedores()
+            objects_total = len(objects)
+            proveedores_total = len(proveedores)
+            
+            if objects_total == 0 or proveedores_total == 0:
+                logging.warning('[%s - %s] %s | %s', date_str, element_id, entidad_publica, proveedores)
+            else:
+                if objects_total == 1:
+                    logging.info('[%s - %s] %s | %s', date_str, element_id, entidad_publica, proveedores)
+                    
+                    for proveedor in proveedores:
+                        adjudicaciones.append({
+                            'd': date_str,
+                            'e': entidad_publica,
+                            'o': unidecode(objects[0].decode('utf-8')),
+                            'p': unidecode(proveedor[0].decode('utf-8')),
+                            'm': proveedor[1],
+                            'i': adjudicacion_id
+                        })
+                elif proveedores_total == objects_total:
+                    logging.info('[%s - %s] %s | %s', date_str, element_id, entidad_publica, proveedores)
+                    
+                    for x in zip(objects, proveedores):
+                            adjudicaciones.append({
+                                'd': date_str,
+                                'e': entidad_publica,
+                                'o': unidecode(x[0].decode('utf-8')),
+                                'p': unidecode(x[0][0].decode('utf-8')),
+                                'm': unidecode(x[0][1].decode('utf-8')),
+                                'i': adjudicacion_id
+                            })
+                else:
+                    logging.warning('[%s - %s] %s | %s', date_str, element_id, entidad_publica, proveedores)
+                    
+            print(adjudicacion, entidad_publica, proveedores)
+            
+        return  adjudicaciones
+                
+
+
