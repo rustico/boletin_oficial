@@ -4,7 +4,7 @@ import logging
 from unidecode import unidecode
 
 class AdjudicacionParser():
-    ENTIDAD_TOKENS = [" LICITACION ", " CONTRATACION ", " LICITACIÓN ", " CONTRATACIÓN ", " Expediente "]
+    ENTIDAD_TOKENS = ["LICITACION", "CONTRATACION", "LICITACIÓN", "CONTRATACIÓN", "Expediente", "SUBASTA", "CONCURSO", 'LP N°', 'LEGAJO DE COMPRA', 'TRAMITE SIMPLIFICADO']
     PROVEEDOR_TOKENS = [ "Empresa", "Firma", "Oferente", "Proveedor", "Adjudicatario", "Razón Social", "Empresa adjudicada", "Nombre del Contratista"]
     OBJETO_TOKENS = ["Objeto", "Objeto de la contratación", "OBJETO DE LA CONTRATACI\xc3\x93N"]
     PRECIO_TOKENS = [ "U$S", "$" ]
@@ -14,28 +14,25 @@ class AdjudicacionParser():
         self.texto = self.__normalizar(texto)
 
     def get_entidad_publica(self):		
-        texto = self.texto.replace("\n", " ").replace("  ", " ")
-
-        lower_index = len(texto)
-        for entidad in self.ENTIDAD_TOKENS:
-            find_index = texto.find(entidad)
-            if find_index != -1 and find_index < lower_index:
-                lower_index = find_index
-
-        if lower_index >= 0:
-            government_department = texto[0: lower_index]
-            if '-' in government_department:
-                government_department = government_department.split('-')[0]
-
-            if 'MINISTERIO DE DEFENSA' in government_department:
-                government_department = re.sub('SSSL|SSL|DGSLD', 'SLD', government_department)
-
-            if 'A.F.I.P.':
-                government_department = government_department.replace('A.F.I.P.', 'AFIP')
-
-            return government_department.strip()
-        else:
+        regex_str = '^' + '|^'.join(self.ENTIDAD_TOKENS)
+        regex = re.compile(regex_str, re.IGNORECASE | re.MULTILINE)
+        sections = regex.split(self.texto)
+        if sections == None:
             return ""
+        
+        government_department = sections[0].replace('\n', ' ').replace('  ', ' ').upper()
+        
+        if '-' in government_department:
+            government_department = government_department.split('-')[0]
+
+        if 'MINISTERIO DE DEFENSA' in government_department:
+            government_department = re.sub('SSSLD|SERVICIO LOGISTICO|SSSL|SSL|DGSLD', 'SLD', government_department)
+
+        if 'A.F.I.P.':
+            government_department = government_department.replace('A.F.I.P.', 'AFIP')
+
+        return government_department.strip()
+        
 
     def get_proveedores(self):
         # Split the text by the 'Proveedor' tokens
