@@ -531,12 +531,13 @@ class TestAdjudicacion25(unittest.TestCase):
 
 class TestAdjudicacion26(unittest.TestCase):
     """ Remove the '-' character from the government department name """
+    """ When the government department is MINISTERIO DE DEFENSA we replace SSSL, SSL, DGSLD by SLD"""
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[26])
             
     def test_get_entidad_publica(self):
         entidad_publica = self.adjudicacion.get_entidad_publica()
-        self.assertEqual(entidad_publica , "MINISTERIO DE DEFENSA DGSLD")
+        self.assertEqual(entidad_publica , "MINISTERIO DE DEFENSA SLD")
 
     def test_get_objects(self):
         objects = self.adjudicacion.get_objects()
@@ -547,6 +548,46 @@ class TestAdjudicacion26(unittest.TestCase):
         proveedores = self.adjudicacion.get_proveedores()
         self.assertEqual(len(proveedores), 1)
         self.assertEqual(proveedores[0], ('YPF S.A', {'moneda': '$', 'valor': 223774.10}))
+
+
+class TestAdjudicacion27(unittest.TestCase):
+    """ When the government department is MINISTERIO DE DEFENSA we replace SSSL, SSL, DGSLD by SLD"""
+    def setUp(self):
+        self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[27])
+            
+    def test_get_entidad_publica(self):
+        entidad_publica = self.adjudicacion.get_entidad_publica()
+        self.assertEqual(entidad_publica , "MINISTERIO DE DEFENSA SLD")
+
+    def test_get_objects(self):
+        objects = self.adjudicacion.get_objects()
+        self.assertEqual(len(objects), 1)
+        self.assertEqual(objects[0], "ADQUISICIÓN DE NEUMÁTICOS – PACID 2014")
+
+    def test_get_proveedores(self):
+        proveedores = self.adjudicacion.get_proveedores()
+        self.assertEqual(len(proveedores), 1)
+        self.assertEqual(proveedores[0], ('LARROCA NEUMÁTICOS S.A', {'moneda': '$', 'valor': 637162.0}))
+
+
+class TestAdjudicacion28(unittest.TestCase):
+    """ When the government department is A.F.I.P we replace it by AFIP"""
+    def setUp(self):
+        self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[28])
+            
+    def test_get_entidad_publica(self):
+        entidad_publica = self.adjudicacion.get_entidad_publica()
+        self.assertEqual(entidad_publica , "AFIP DIRECCIÓN REGIONAL RÍO GALLEGOS")
+
+    def test_get_objects(self):
+        objects = self.adjudicacion.get_objects()
+        self.assertEqual(len(objects), 1)
+        self.assertEqual(objects[0], "SERVICIO DE LIMPIEZA DE EDIFICIOS PARA LA DIRECCIÓN REGIONAL RÍO GALLEGOS DEPENDIENTE DE LA ADMINISTRACIÓN FEDERAL DE INGRESOS PÚBLICOS")
+
+    def test_get_proveedores(self):
+        proveedores = self.adjudicacion.get_proveedores()
+        self.assertEqual(len(proveedores), 1)
+        self.assertEqual(proveedores[0], ('LUNA ANICETO MIGUEL', {'moneda': '$', 'valor': 383400.0}))                
         
 if __name__ == '__main__':
     unittest.main()

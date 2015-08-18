@@ -27,6 +27,12 @@ class AdjudicacionParser():
             if '-' in government_department:
                 government_department = government_department.split('-')[0]
 
+            if 'MINISTERIO DE DEFENSA' in government_department:
+                government_department = re.sub('SSSL|SSL|DGSLD', 'SLD', government_department)
+
+            if 'A.F.I.P.':
+                government_department = government_department.replace('A.F.I.P.', 'AFIP')
+
             return government_department.strip()
         else:
             return ""
