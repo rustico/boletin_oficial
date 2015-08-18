@@ -610,6 +610,138 @@ class TestGovernmentDepartment(unittest.TestCase):
 
         for name in government_department_names:
             self.assertEqual('AFIP', AdjudicacionParser.get_government_department(name))
+
+
+    def test_government_department_armada_argentina(self):
+        government_department_names = [
+            'ARMADA ARGENTINA',
+            'ARMADA ARGENTINA AGRUPACION SERVICIOS DE CUARTEL',
+            'ARMADA ARGENTINA ESTADO MAYOR GENDE LA ARMADA',
+            'ARMADA ARGENTINAESTADO MAYOR GENERAL DE LA ARMADA - SIAF DEPARTAMENTO CONTRATACIONES',
+            'ARMADA ARGETINA ARSENAL NAVAL PUERTO BELGRANO 2'
+        ]
+
+        for name in government_department_names:
+            self.assertEqual('ARMADA ARGENTINA', AdjudicacionParser.get_government_department(name))
+
+    def test_government_department_banco_nacion(self):
+        government_department_names = [
+            'BANCO DE LA NACION ARGENTINA',
+            'BANCO DE LA NACION ARGENTINA AREA COMPRAS Y'
+        ]
+
+        for name in government_department_names:
+            self.assertEqual('BANCO DE LA NACION ARGENTINA', AdjudicacionParser.get_government_department(name))
+
+    def test_government_department_ejercito_argentino(self):
+        government_department_names = [
+            'EJERCITIO ARGENTINO COMANDO DE BRIGADA MECANIZADA XI',
+            'EJERCITO  ARGENTINO REGIMIENTO DE CABALLERIA DE MONTANA 4',
+            'EJERCITO ARGENTINO  DPTO CONT Y FIN - EMGE',
+            'EJERCITO ARGENTINO',
+            'EJERCITO ARGETINO',
+            'EJERCITO ARGENTICOMANDO BRIGADA BLINDADA I',
+            'EJERCITO ARGENTINCOMANDO BRIGADA DE MONTE XII'
+        ]
+
+        for name in government_department_names:
+            self.assertEqual('EJERCITO ARGENTINO', AdjudicacionParser.get_government_department(name))
+
+    def test_government_department_fuerza_area_argentina(self):
+        government_department_names = [
+            'FUERZA AEREA ARGENTINA SUBJEFATURA DEL ESTADO MAYOR GENERAL CIRCULO DE LA FUERZA AEREA DTO. ECONOMICO FINANCIERO',
+            'FUERZA AREA ARGENTINA COMANDO DE ADIESTRAMIENTO Y ALISTAMIENTO II BRIGADA AEREA',
+            'FUERZA AEREA ARGENTINA',
+            'ESTADO MAYOR GENERAL DE LA FUERZA AEREA ARGENTINA DIRECCION GENERAL DE EDUCACION LICEO AERONAUTICO MILITAR DIVISION ECONOMIA'
+        ]
+
+        for name in government_department_names:
+            self.assertEqual('FUERZA AEREA ARGENTINA', AdjudicacionParser.get_government_department(name))
+
+    def test_government_department_gendarmeria_nacional(self):
+        government_department_names = [
+            'GENDARMERIA NACIONAL',
+            'GENDARMERIA NACIONAL ARGENTINA AGRUPACION III "CORRIENTES" DE GENDARMERIA NACIONAL',
+            'GENDARMERIA NACIONAL ARGENTINA',
+            'GENDARMERIA NACIONAL ESCUADRON 27 "USPALLATA" DE GENDARMERIA NACIONAL',
+            'GENDARMERIA NACIONALARGENTINA',
+            'GENDARMERLA NACIONAL ARGENTINA'
+        ]
+
+        for name in government_department_names:
+            self.assertEqual('GENDARMERIA NACIONAL ARGENTINA', AdjudicacionParser.get_government_department(name))
+
+    def test_government_department_ministerio_agricultura(self):
+        government_department_names = [
+            'MINISTERIO DE AGRICULTURA GANADERIA Y PESCA INSTITUTO NACIONAL DE INVESTIGACION Y DESARROLLO PESQUERO',
+            'MINISTERIO DE AGRICULTURA, GANADERIA Y PESCA',
+            'MINISTERIO DE AGRICULTURA, GANADERIA Y PESCA  COMISION EVALUADORA',
+            'MINISTERIO DE AGRICULTURA, GANADERIA Y PESCA INTA',
+            'MINISTERIO DE AGRICULTURA, GANADERLA Y PESCA',
+            'MINISTERIO DE AGRICULTURA, GANDERIA Y PESCA INSTITUTO NACIONAL DE TECNOLOGIA AGROPECUARIA'
+        ]
+
+        for name in government_department_names:
+            self.assertEqual('MINISTERIO DE AGRICULTURA, GANADERIA Y PESCA', AdjudicacionParser.get_government_department(name))
+
+    def test_government_department_ministerio_defensa(self):
+        government_department_names = [
+            'MINISTERIO DE DEFENSA',
+            'MINISTERIO DE DEFENSA  DGA',
+            'MINISTERIO DE DEFENSA DGA - UOC 35/04 LICITCION PUBLICA Ndeg 56/2010',
+            'MINISTERIO DE DEFENSA INSTITUTO GEOGRAFICO MILITAR',
+            'MINISTERIO DE DEFENSA SLA',
+            'MINISTERIO DE DEFENSA SLDD',
+            'MINISTERIO DEFENSA DGA'
+        ]
+
+        for name in government_department_names:
+            self.assertEqual('MINISTERIO DE DEFENSA', AdjudicacionParser.get_government_department(name))
+
+    def test_government_department_ministerio_desarrollo_social(self):
+        government_department_names = [
+            'MINISTERIO DESARROLL SOCIAL AREA COMPRAS',
+            'MINISTERIO DE  DESARROLLO SOCIAL',
+            'MINISTERIO DE  DESARROLLO SOCIAL AREA COMPRAS',
+            'MINISTERIO DE DESARROLLO SOCIAL',
+            'MINISTERIO DESARROLLO SOCIAL'
+        ]
+
+        for name in government_department_names:
+            self.assertEqual('MINISTERIO DE DESARROLLO SOCIAL', AdjudicacionParser.get_government_department(name))
+
+    def test_government_department_prefectura_naval(self):
+        government_department_names = [
+            'PEFECTURA NAVAL ARGENTINA',
+            'PREFECTURA NAVAL ARGENTINA',
+            'PREFECTURA NAVAL ARGENTINA DICTAMEN DE EVALUACION No 139/2012'
+        ]
+
+        for name in government_department_names:
+            self.assertEqual('PREFECTURA NAVAL ARGENTINA', AdjudicacionParser.get_government_department(name))
+
+    def test_government_department_jefatura_de_gabinete(self):
+        government_department_names = [
+            'JEFATURA DE GABINETE DE MINISTROS DIRECCION GENERAL DEL SERVICIO ADMINISTRATIVO FINANCIERO DE APOYO A LA ACUMAR',
+            'JEFATURA DE GABINETE DE MINISTROS SECRETARIA DE AMBIENTE Y DESARROLLO SUSTENTABLE',
+            'JEFATURA DE GABINETE DE MINISTROS SECRETARIA DE COORDINACION ADMINISTRATLVA Y EVALUACION PRESUPUESTARIA SUBSECRETARIA DE COORDINACIN ADMINISTRATIVA DIRECCION GENERAL TECNICO ADMINISTRATIVA',
+            'JEFATURA DE GABINETE DE MINISTROS SECRETARIA DE MEDIOS DE COMUNICACION COMITE FEDERAL DE RADIODIFUSION',
+            'JEFATURA DE GABINETE DE MINISTROS SECRETARLA DE COORDINACION ADMINISTRATIVA Y EVALUACION PRESUPUESTARIA SUBSECRETARIA DE COORDINACION ADMINISTRATIVA DIRECCION GENERAL TECNICO ADMINISTRATIVA'
+        ]
+
+        for name in government_department_names:
+            self.assertEqual('JEFATURA DE GABINETE DE MINISTROS', AdjudicacionParser.get_government_department(name))
+
+    def test_government_department_autoridad_regulatoria_nuclear(self):
+        government_department_names = [
+            'AUTORIDAD REGULADORA NUCLEAR DEPENDIENTE DE LA PRESIDENCIA DE LA NACION',
+            'AUTORIDAD REGULATORIA NUCLEAR',
+            'PRESIDENCIA DE LA NACION AUTORIDAD REGULATORIA NUCLEAR PUBLICACIoN DE LOS CONTRATOS PERFECCIONADOS RES. 368/2000',
+            'PRESIDENCIA DE LA NACION AUTORIDAD REGULATORIA NUCLEAR'
+        ]
+
+        for name in government_department_names:
+            self.assertEqual('AUTORIDAD REGULATORIA NUCLEAR', AdjudicacionParser.get_government_department(name))                        
         
 if __name__ == '__main__':
     unittest.main()
