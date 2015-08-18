@@ -587,7 +587,29 @@ class TestAdjudicacion28(unittest.TestCase):
     def test_get_proveedores(self):
         proveedores = self.adjudicacion.get_proveedores()
         self.assertEqual(len(proveedores), 1)
-        self.assertEqual(proveedores[0], ('LUNA ANICETO MIGUEL', {'moneda': '$', 'valor': 383400.0}))                
+        self.assertEqual(proveedores[0], ('LUNA ANICETO MIGUEL', {'moneda': '$', 'valor': 383400.0}))
+
+class TestGovernmentDepartment(unittest.TestCase):
+    def test_government_department_afip(self):
+        government_department_names = [
+            'A.F. I .P.',
+            'A.F.I.P - DGI DIRECCION REGIONAL SUR'
+            'A.F.IP.',
+            'ADMINISTRACION FEDERAL DE INGRESO PUBLICOS D.G.I.',
+            'ADMINISTRACION FEDERAL DE INGRESOS DIRECCION REGIONAL POSADAS ADJUDICACIONES REALIZADAS EN EL MES DE FEBRERO DE 2014',
+            'ADMINISTRACION FEDERAL DE INGRESOS PUBLICOS D.G.I.',
+            'ADMINISTRACION FEDERAL DE INGRESOS PUBLICOS DIRECCION GENERAL IMPOSITIVA  DIRECCION REGIONAL SALTA',
+            'ADMINISTRACION FEDERAL DE INGRESOS PUBLICOS DIRECCION REGIONAL JUNIN',
+            'AFIP',
+            'AFIP - D.G.I. DIRECCION REGIONAL BAHIA BLANCA',
+            'AFIP - DGA DIRECCION REGIONAL ADUANERA CORDOBA',
+            'AFIP ADUANA DE EZEIZA',
+            'AFIP LISTADO ORDENES DE COMPRAS EMITIDAS EN EL MES DE JUNIO DE 2014',
+            'AFIP-D.G.I. DIRECCION REGIONAL SUR C.D. No 25/2008'
+        ]
+
+        for name in government_department_names:
+            self.assertEqual('AFIP', AdjudicacionParser.get_government_department(name))
         
 if __name__ == '__main__':
     unittest.main()

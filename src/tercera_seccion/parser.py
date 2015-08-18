@@ -35,7 +35,17 @@ class AdjudicacionParser():
 
     @staticmethod
     def get_government_department(name):
-        pass
+        government_department_regex = {
+            'AFIP': ['A[.\s]*F[.\s]*I[.\s]*P[.\s]*', 'ADMINISTRACION FEDERAL DE INGRESO']
+        }
+
+        for government_name, regex_values in government_department_regex.iteritems():
+            regex_str = '|'.join(regex_values)
+            regex = re.compile(regex_str)
+            if regex.match(name):
+                return government_name
+
+        return name
         
 
     def get_proveedores(self):
@@ -211,44 +221,49 @@ class AdjudicacionParser():
             
             adjudicacion_id, adjudicacion_str = element
             adjudicacion  = AdjudicacionParser(adjudicacion_str)
-            entidad_publica = adjudicacion.get_government_department_name()
-            entidad_publica = unidecode(entidad_publica.decode('utf-8'))
+            
+            government_department_name = adjudicacion.get_government_department_name()
+            government_department_name = unidecode(government_department_name.decode('utf-8'))
+            government_department = adjudicacion.get_government_department(government_department_name)
+            
             objects = adjudicacion.get_objects()
             proveedores = adjudicacion.get_proveedores()
             objects_total = len(objects)
             proveedores_total = len(proveedores)
             
             if objects_total == 0 or proveedores_total == 0:
-                logging.warning('[%s - %s] %s | %s', date_str, element_id, entidad_publica, proveedores)
+                logging.warning('[%s - %s] %s | %s', date_str, element_id, government_department, proveedores)
             else:
                 if objects_total == 1:
-                    logging.info('[%s - %s] %s | %s', date_str, element_id, entidad_publica, proveedores)
+                    logging.info('[%s - %s] %s | %s', date_str, element_id, government_department, proveedores)
                     
                     for proveedor in proveedores:
                         adjudicaciones.append({
                             'd': date_str,
-                            'e': entidad_publica,
+                            'e': government_department,
+                            'e_n': government_department_name,
                             'o': unidecode(objects[0].decode('utf-8')).replace('"', ''),
                             'p': unidecode(proveedor[0].decode('utf-8')).replace('"', ''),
                             'm': proveedor[1],
                             'i': adjudicacion_id
                         })
                 elif proveedores_total == objects_total:
-                    logging.info('[%s - %s] %s | %s', date_str, element_id, entidad_publica, proveedores)
+                    logging.info('[%s - %s] %s | %s', date_str, element_id, government_department, proveedores)
                     
                     for x in zip(objects, proveedores):
                             adjudicaciones.append({
                                 'd': date_str,
-                                'e': entidad_publica,
+                                'e': government_department,
+                                'e_n': government_department_name,
                                 'o': unidecode(x[0].decode('utf-8')).replace('"', ''),
                                 'p': unidecode(x[0][0].decode('utf-8')).replace('"', ''),
                                 'm': unidecode(x[0][1].decode('utf-8')),
                                 'i': adjudicacion_id
                             })
                 else:
-                    logging.warning('[%s - %s] %s | %s', date_str, element_id, entidad_publica, proveedores)
+                    logging.warning('[%s - %s] %s | %s', date_str, element_id, government_department, proveedores)
                     
-            print(adjudicacion, entidad_publica, proveedores)
+            print(adjudicacion, government_department, proveedores)
             
         return  adjudicaciones
                 
