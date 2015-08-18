@@ -508,5 +508,25 @@ class TestAdjudicacion24(unittest.TestCase):
         self.assertEqual(len(proveedores), 1)
         self.assertEqual(proveedores[0], ('NOSIS LABORATORIO DE INVESTIGACION Y DESARROLLO S.A', {'moneda': '$', 'valor': 7200.0}))
         
+
+class TestAdjudicacion25(unittest.TestCase):
+    def setUp(self):
+        self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[25])
+            
+    def test_get_entidad_publica(self):
+        entidad_publica = self.adjudicacion.get_entidad_publica()
+        self.assertEqual(entidad_publica , "MINISTERIO DE TURISMO")
+
+    def test_get_objects(self):
+        objects = self.adjudicacion.get_objects()
+        self.assertEqual(len(objects), 1)
+        self.assertEqual(objects[0], "“ADQUISICION DE NEUMATICOS Y CAMARAS PARA DISTINTAS DEPENDENCIAS DE ESTE MINISTERIO”")
+
+    def test_get_proveedores(self):
+        proveedores = self.adjudicacion.get_proveedores()
+        self.assertEqual(len(proveedores), 2)
+        self.assertEqual(proveedores[0], ('FERNANDEZ LUIS ALBERTO', {'moneda': '$', 'valor': 77692.0}))
+        self.assertEqual(proveedores[1], ('LAROCCA NEUMATICOS S.A.', {'moneda': '$', 'valor': 67893.0 }))
+        
 if __name__ == '__main__':
     unittest.main()

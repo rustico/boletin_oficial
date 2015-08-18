@@ -16,12 +16,16 @@ class AdjudicacionParser():
     def get_entidad_publica(self):		
         texto = self.texto.replace("\n", " ").replace("  ", " ")
 
+        lower_index = len(texto)
         for entidad in self.ENTIDAD_TOKENS:
             find_index = texto.find(entidad)
-            if find_index != -1:
-                return texto[0: find_index].strip()
+            if find_index != -1 and find_index < lower_index:
+                lower_index = find_index
 
-        return ""
+        if lower_index >= 0:
+            return texto[0: lower_index].strip()
+        else:
+            return ""
 
     def get_proveedores(self):
         # Split the text by the 'Proveedor' tokens
