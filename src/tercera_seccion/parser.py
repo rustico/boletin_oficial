@@ -4,7 +4,7 @@ import logging
 from unidecode import unidecode
 
 class AdjudicacionParser():
-    ENTIDAD_TOKENS = ["LICITACION", "CONTRATACION", "LICITACIÓN", "CONTRATACIÓN", "Expediente", "SUBASTA", "CONCURSO", 'LP N°', 'LEGAJO DE COMPRA', 'TRAMITE SIMPLIFICADO']
+    ENTIDAD_TOKENS = ["LICITACION", "CONTRATACION", "LICITACIÓN", "CONTRATACIÓN", "Expediente", "SUBASTA", "CONCURSO", 'LP N°', 'LEGAJO DE COMPRA', 'TRAMITE SIMPLIFICADO', 'COMPRA DIRECTA', 'N°', 'COMPRAS', 'LISTADO']
     PROVEEDOR_TOKENS = [ "Empresa", "Firma", "Oferente", "Proveedor", "Adjudicatario", "Razón Social", "Empresa adjudicada", "Nombre del Contratista"]
     OBJETO_TOKENS = ["Objeto", "Objeto de la contratación", "OBJETO DE LA CONTRATACI\xc3\x93N"]
     PRECIO_TOKENS = [ "U$S", "$" ]
@@ -13,7 +13,7 @@ class AdjudicacionParser():
         self.texto_original = texto
         self.texto = self.__normalizar(texto)
 
-    def get_entidad_publica(self):		
+    def get_government_department_name(self):		
         regex_str = '^' + '|^'.join(self.ENTIDAD_TOKENS)
         regex = re.compile(regex_str, re.IGNORECASE | re.MULTILINE)
         sections = regex.split(self.texto)
@@ -32,6 +32,10 @@ class AdjudicacionParser():
             government_department = government_department.replace('A.F.I.P.', 'AFIP')
 
         return government_department.strip()
+
+    @staticmethod
+    def get_government_department(name):
+        pass
         
 
     def get_proveedores(self):
@@ -207,7 +211,7 @@ class AdjudicacionParser():
             
             adjudicacion_id, adjudicacion_str = element
             adjudicacion  = AdjudicacionParser(adjudicacion_str)
-            entidad_publica = adjudicacion.get_entidad_publica()
+            entidad_publica = adjudicacion.get_government_department_name()
             entidad_publica = unidecode(entidad_publica.decode('utf-8'))
             objects = adjudicacion.get_objects()
             proveedores = adjudicacion.get_proveedores()

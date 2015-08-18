@@ -7,8 +7,8 @@ class TestAdjudicacion00(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[0])
 
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica() 
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name() 
         self.assertEqual(entidad_publica, "FUERZA AEREA ARGENTINA ESTADO MAYOR GENERAL DE LA FUERZA AEREA INSTITUTO DE FORMACION EZEIZA")        
         
     def test_get_proveedores(self):
@@ -28,8 +28,8 @@ class TestAdjudicacion01(unittest.TestCase):
         objeto = self.adjudicacion.get_objects()[0]
         self.assertEqual(objeto, "Cursos de Mantenimiento de Motores T-56")
 
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica()
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name()
         self.assertEqual(entidad_publica, "FUERZA AEREA ARGENTINA DIRECCION GENERAL DE INTENDENCIA DIRECCION DE CONTRATACIONES")
         
     def test_get_proveedores(self):
@@ -46,8 +46,8 @@ class TestAdjudicacion02(unittest.TestCase):
         # self.assertEqual(objeto, "Adquisición de Combustibles y Lubricantes para el funcionamiento del Instituto en el 4to Trimestre 2011 y 1er Trimestre 2012")
         self.assertEqual(objeto, "Adquisición de Combustibles y Lubricantes para el funcionamiento del Instituto en el 4to Trimestre")
 
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica()
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name()
         self.assertEqual(entidad_publica, "EJERCITO ARGENTINO COLEGIO MILITAR DE LA NACION")
         
     def test_get_proveedores(self):
@@ -67,8 +67,8 @@ class TestAdjudicacion03(unittest.TestCase):
         objeto = self.adjudicacion.get_objects()[0]
         self.assertEqual(objeto, "Adquisición de Equipamiento Técnico para la Dirección de Policía Científica")
 
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica()
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name()
         self.assertEqual(entidad_publica, "GENDARMERIA NACIONAL ARGENTINA")
         
     def test_get_proveedores(self):
@@ -85,8 +85,8 @@ class TestAdjudicacion04(unittest.TestCase):
         objeto = self.adjudicacion.get_objects()[0]
         self.assertEqual(objeto, "Adquisición de Chombas de Piqué identificatorias")
 
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica()
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name()
         self.assertEqual(entidad_publica, "ADMINISTRACION FEDERAL DE INGRESOS PUBLICOS DIRECCION REGIONAL ADUANERA MENDOZA")
         
     def test_get_proveedores(self):
@@ -102,8 +102,8 @@ class TestAdjudicacion05(unittest.TestCase):
         objeto = self.adjudicacion.get_objects()[0]
         self.assertEqual(objeto, "Servicio de traslado de agua potable para consumo del ACI Uspallata – Prórroga")
 
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica()
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name()
         self.assertEqual(entidad_publica, "ADMINISTRACION FEDERAL DE INGRESOS PUBLICOS DIRECCION REGIONAL ADUANERA MENDOZA")
         
     def test_get_proveedores(self):
@@ -120,8 +120,8 @@ class TestAdjudicacion06(unittest.TestCase):
         objeto = self.adjudicacion.get_objects()[0]
         self.assertEqual(objeto, "Mantenimiento Edilicio")
 
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica()
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name()
         self.assertEqual(entidad_publica, "MINISTERIO DE DESARROLLO SOCIAL AREA COMPRAS")
         
     def test_get_proveedores(self):
@@ -137,9 +137,9 @@ class TestAdjudicacion07(unittest.TestCase):
         objeto = self.adjudicacion.get_objects()
         self.assertEqual(len(objeto), 0)
 
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica()
-        self.assertEqual(entidad_publica, "AFIP LISTADO ORDENES DE COMPRAS EMITIDAS EN EL MES DE MAYO DE 2012")
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name()
+        self.assertEqual(entidad_publica, "AFIP")
 
     def test_get_proveedores(self):
         proveedores = self.adjudicacion.get_proveedores()
@@ -169,8 +169,8 @@ class TestAdjudicacion08(unittest.TestCase):
         objeto = self.adjudicacion.get_objects()[0]
         self.assertEqual(objeto, "Suscripción a la Editorial La Ley año 2011-2012")
 
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica()
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name()
         self.assertEqual(entidad_publica, "MINISTERIO DE AGRICULTURA, GANADERIA Y PESCA INSTITUTO NACIONAL DE INVESTIGACION Y DESARROLLO PESQUERO")
         
     def test_get_proveedores(self):
@@ -218,8 +218,8 @@ class TestAdjudicacion09(unittest.TestCase):
         self.assertEqual(objects[23], "Servicio de p Limpieza del edificio sede de la Agencia")
         #self.assertEqual(objects[23], "Servicio de p Limpieza del edificio sede de la Agencia Nº 46")
 
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica()
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name()
         self.assertEqual(entidad_publica, "ADMINISTRACION FEDERAL DE INGRESOS PUBLICOS DIRECCION REGIONAL PALERMO")
         
     def test_get_proveedores(self):
@@ -255,8 +255,8 @@ class TestAdjudicacion10(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[10])
             
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica()
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name()
         self.assertEqual(entidad_publica , "GENDARMERÍA NACIONAL ARGENTINA")
 
     def test_get_proveedores(self):
@@ -268,8 +268,8 @@ class TestAdjudicacion11(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[11])
             
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica()
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name()
         self.assertEqual(entidad_publica , "MINISTERIO DE EDUCACIÓN DE LA NACIÓN")
 
     def test_get_objects(self):
@@ -284,8 +284,8 @@ class TestAdjudicacion12(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[12])
             
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica()
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name()
         self.assertEqual(entidad_publica , "EJÉRCITO ARGENTINO COMANDO DE LA IRA BRIGADA BLINDADA")
 
     def test_get_objects(self):
@@ -361,8 +361,8 @@ class TestAdjudicacion17(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[17])
             
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica()
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name()
         self.assertEqual(entidad_publica , "EJÉRCITO ARGENTINO DIRECCIÓN DE INGENIEROS E INFRAESTRUCTURA")
 
     def test_get_objects(self):
@@ -379,8 +379,8 @@ class TestAdjudicacion18(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[18])
             
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica()
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name()
         self.assertEqual(entidad_publica , "ADMINISTRACION FEDERAL DE INGRESOS PUBLICOS DIRECCION REGIONAL PALERMO")
 
     def test_get_objects(self):
@@ -398,8 +398,8 @@ class TestAdjudicacion19(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[19])
             
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica()
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name()
         self.assertEqual(entidad_publica , "MINISTERIO PUBLICO DE LA DEFENSA DEFENSORIA GENERAL DE LA NACION")
 
     def test_get_objects(self):
@@ -418,8 +418,8 @@ class TestAdjudicacion20(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[20])
             
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica()
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name()
         self.assertEqual(entidad_publica , "MINISTERIO DE AGRICULTURA, GANADERIA Y PESCA INSTITUTO NACIONAL DE INVESTIGACION Y DESARROLLO PESQUERO")
 
     def test_get_objects(self):
@@ -437,8 +437,8 @@ class TestAdjudicacion21(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[21])
             
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica()
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name()
         self.assertEqual(entidad_publica , "UNIVERSIDAD NACIONAL DE MAR DEL PLATA")
 
     def test_get_objects(self):
@@ -455,8 +455,8 @@ class TestAdjudicacion22(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[22])
             
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica()
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name()
         self.assertEqual(entidad_publica , "EJERCITO ARGENTINO DPTO CONT Y FIN – EMGE")
 
     def test_get_objects(self):
@@ -475,8 +475,8 @@ class TestAdjudicacion23(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[23])
             
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica()
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name()
         self.assertEqual(entidad_publica , "ARMADA ARGENTINA ESTADO MAYOR GENERAL DE LA ARMADA")
 
     def test_get_objects(self):
@@ -494,8 +494,8 @@ class TestAdjudicacion24(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[24])
             
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica()
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name()
         self.assertEqual(entidad_publica , "MINISTERIO DE TURISMO")
 
     def test_get_objects(self):
@@ -513,8 +513,8 @@ class TestAdjudicacion25(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[25])
             
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica()
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name()
         self.assertEqual(entidad_publica , "MINISTERIO DE TURISMO")
 
     def test_get_objects(self):
@@ -535,8 +535,8 @@ class TestAdjudicacion26(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[26])
             
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica()
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name()
         self.assertEqual(entidad_publica , "MINISTERIO DE DEFENSA SLD")
 
     def test_get_objects(self):
@@ -555,8 +555,8 @@ class TestAdjudicacion27(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[27])
             
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica()
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name()
         self.assertEqual(entidad_publica , "MINISTERIO DE DEFENSA SLD")
 
     def test_get_objects(self):
@@ -575,8 +575,8 @@ class TestAdjudicacion28(unittest.TestCase):
     def setUp(self):
         self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[28])
             
-    def test_get_entidad_publica(self):
-        entidad_publica = self.adjudicacion.get_entidad_publica()
+    def test_get_government_department_name(self):
+        entidad_publica = self.adjudicacion.get_government_department_name()
         self.assertEqual(entidad_publica , "AFIP DIRECCIÓN REGIONAL RÍO GALLEGOS")
 
     def test_get_objects(self):
