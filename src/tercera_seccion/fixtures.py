@@ -913,5 +913,32 @@ TOMOTORES PLUSMAR S.A. - Pedro Mendoza
 3453 (1888) Ciudad Autónoma de Buenos Aires.
 Precio total adjudicado: $ 171.600,00.
 e. 17/05/2013 Nº 35260/13 v. 17/05/2013
+""",
+# Adjudicacion 24 / 2015-07-27 4933810
+"""
+MINISTERIO DE TURISMO
+CONTRATACIÓN DIRECTA 
+POR ESPECIALIDAD N° 02/2015
+CUDAP: EXP-STN N° 2983/2014
+OBJETO: “SERVICIO DE INFORMACION CO-
+MERCIAL”.
+Clase: Sin Clase
+Modalidad: Sin modalidad.
+Acto Administrativo: Disposición de Adjudi-
+cación N°  745/2015 de fecha: 22/07/2015 la 
+cual podrá ser consultada en Página Web del 
+MINISTERIO DE TURISMO http://www.turismo.
+gov.ar/ - También se puede solicitar copia en 
+la sede del Ministerio: Suipacha N° 1111 - piso 
+22° (C.A.B.A.) / Departamento de Compras y 
+Patrimonio en el horario de 10:00 a 13:00 y de 
+14:00 a 16:00 hs.
+Orden de Mérito: N° 1
+Adjudicatario: NOSIS LABORATORIO DE IN-
+VESTIGACION Y DESARROLLO S.A.
+Cuit N° 30-62845551-8
+Importe: SON PESOS SIETE MIL DOSCIENTOS 
+- ($ 7.200) - PRECIO FINAL CON IVA INCLUIDO.
+e. 27/07/2015 N° 130370/15 v. 27/07/2015
 """    
 )

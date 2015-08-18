@@ -213,8 +213,8 @@ class AdjudicacionParser():
                         adjudicaciones.append({
                             'd': date_str,
                             'e': entidad_publica,
-                            'o': unidecode(objects[0].decode('utf-8')),
-                            'p': unidecode(proveedor[0].decode('utf-8')),
+                            'o': unidecode(objects[0].decode('utf-8')).replace('"', ''),
+                            'p': unidecode(proveedor[0].decode('utf-8')).replace('"', ''),
                             'm': proveedor[1],
                             'i': adjudicacion_id
                         })
@@ -225,8 +225,8 @@ class AdjudicacionParser():
                             adjudicaciones.append({
                                 'd': date_str,
                                 'e': entidad_publica,
-                                'o': unidecode(x[0].decode('utf-8')),
-                                'p': unidecode(x[0][0].decode('utf-8')),
+                                'o': unidecode(x[0].decode('utf-8')).replace('"', ''),
+                                'p': unidecode(x[0][0].decode('utf-8')).replace('"', ''),
                                 'm': unidecode(x[0][1].decode('utf-8')),
                                 'i': adjudicacion_id
                             })
