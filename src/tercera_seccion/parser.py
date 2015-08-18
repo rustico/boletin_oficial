@@ -23,7 +23,11 @@ class AdjudicacionParser():
                 lower_index = find_index
 
         if lower_index >= 0:
-            return texto[0: lower_index].strip()
+            government_department = texto[0: lower_index]
+            if '-' in government_department:
+                government_department = government_department.split('-')[0]
+
+            return government_department.strip()
         else:
             return ""
 

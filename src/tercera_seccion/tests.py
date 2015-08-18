@@ -171,7 +171,7 @@ class TestAdjudicacion08(unittest.TestCase):
 
     def test_get_entidad_publica(self):
         entidad_publica = self.adjudicacion.get_entidad_publica()
-        self.assertEqual(entidad_publica, "MINISTERIO DE AGRICULTURA, GANADERIA Y PESCA INSTITUTO NACIONAL DE INVESTIGACION Y DESARROLLO PESQUERO - SAF 607")
+        self.assertEqual(entidad_publica, "MINISTERIO DE AGRICULTURA, GANADERIA Y PESCA INSTITUTO NACIONAL DE INVESTIGACION Y DESARROLLO PESQUERO")
         
     def test_get_proveedores(self):
         proveedores = self.adjudicacion.get_proveedores()
@@ -477,7 +477,7 @@ class TestAdjudicacion23(unittest.TestCase):
             
     def test_get_entidad_publica(self):
         entidad_publica = self.adjudicacion.get_entidad_publica()
-        self.assertEqual(entidad_publica , "ARMADA ARGENTINA ESTADO MAYOR GENERAL DE LA ARMADA - SGNA DEPARTAMENTO CONTABILIDAD")
+        self.assertEqual(entidad_publica , "ARMADA ARGENTINA ESTADO MAYOR GENERAL DE LA ARMADA")
 
     def test_get_objects(self):
         objects = self.adjudicacion.get_objects()
@@ -527,6 +527,26 @@ class TestAdjudicacion25(unittest.TestCase):
         self.assertEqual(len(proveedores), 2)
         self.assertEqual(proveedores[0], ('FERNANDEZ LUIS ALBERTO', {'moneda': '$', 'valor': 77692.0}))
         self.assertEqual(proveedores[1], ('LAROCCA NEUMATICOS S.A.', {'moneda': '$', 'valor': 67893.0 }))
+
+
+class TestAdjudicacion26(unittest.TestCase):
+    """ Remove the '-' character from the government department name """
+    def setUp(self):
+        self.adjudicacion = AdjudicacionParser(fixtures.adjudicaciones[26])
+            
+    def test_get_entidad_publica(self):
+        entidad_publica = self.adjudicacion.get_entidad_publica()
+        self.assertEqual(entidad_publica , "MINISTERIO DE DEFENSA DGSLD")
+
+    def test_get_objects(self):
+        objects = self.adjudicacion.get_objects()
+        self.assertEqual(len(objects), 1)
+        self.assertEqual(objects[0], "“ADQUISICIÓN DE LUBRICANTES Y FLUIDOS ENVASADOS PARA CAV-2015/2016”")
+
+    def test_get_proveedores(self):
+        proveedores = self.adjudicacion.get_proveedores()
+        self.assertEqual(len(proveedores), 1)
+        self.assertEqual(proveedores[0], ('YPF S.A', {'moneda': '$', 'valor': 223774.10}))
         
 if __name__ == '__main__':
     unittest.main()
