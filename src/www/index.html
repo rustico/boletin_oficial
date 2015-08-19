@@ -4,11 +4,33 @@
         <meta charset="utf-8">
         <title>Adjudicaciones</title>
     </head>
+    <style>
+     body {
+         font: 10px sans-serif;
+     }
+     .bar rect {
+         fill: steelblue;
+         shape-rendering: crispEdges;
+     }
+     .bar text {
+         fill: #fff;
+     }
+     .axis path, .axis line {
+         fill: none;
+         stroke: #000;
+         shape-rendering: crispEdges;
+     }
+    </style>         
+             
+         
+
     <body>
+        <svg></svg>
         <script type="text/javascript" src="/vendors/d3.v3.min.js"></script>
         <script type="text/javascript">
          d3.json("/data/adjudicaciones.json", function(json) {
-             var by_ministerio = d3.nest()
+             // Data by Government Department
+             var departments = d3.nest()
                                    .key(function(d) { return d.e; })
                                    .rollup(function(adjudicaciones) {
                                        var money = {};
@@ -27,30 +49,48 @@
                                            'money':  money
                                        };
                                    })
-                                   .entries(json)
-                                   .sort(function(x,y) {
-                                       if(x.values.adjudicaciones >= y.values.adjudicaciones) {
-                                           return -1;
-                                       } else if (x.values.adjudicaciones < y.values.adjudicaciones) {
-                                           return 1;
-                                       } else {
-                                           return 0;
-                                       }
-                                   });
-             
-             d3.select('body')
-               .data(by_ministerio)
+                                   .entries(json);
+
+             var departments_top_20 = departments
+               .sort(function(x,y) {
+                 if(x.values.adjudicaciones >= y.values.adjudicaciones) {
+                     return -1;
+                 } else if (x.values.adjudicaciones < y.values.adjudicaciones) {
+                     return 1;
+                 } else {
+                     return 0;
+                 }
+               })
+               .slice(0, 20)
+               .sort(function(x,y) {
+                 if(x.key >= y.key) {
+                     return 1;
+                 } else if (x.key < y.key) {
+                     return -1;
+                 } else {
+                     return 0;
+                 }
+             });
+
+             var max =  departments_top_20[0].values.adjudicaciones;
+             var data = departments_top_20.map(function(x) { return x.values.adjudicaciones});
+             var y = d3.scale.linear().domain([0, max]).range([0, 100]);
+
+             d3.select("svg").attr("style","height: 600px; width: 1200px;");
+
+             d3.select("svg")
+               .selectAll("rect")
+               .data(data)
                .enter()
-               .append('div')
-               .text(function(d) {
-                   return d.key + ' ' + d.values.adjudicaciones + ' ' + d.values.money['$'];
-               });
-         
-             
-             console.info(by_ministerio);
-             
+               .append("rect")
+               .attr("width", 40)
+               .attr("height", function(d) { console.info(y(d)); return y(d); })
+               .attr("x", function(d,i) { return i * 60; })
+               .attr("y", function(d) { return 600 - y(d);})
+               .style("fill", "blue")
+               .style("stroke", "red")
+               .style("stroke-width", "1px")
          });
-         
         </script>
     </body>
 </html>   
